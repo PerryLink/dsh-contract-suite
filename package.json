@@ -1,0 +1,46 @@
+{
+  "name": "dsh-contract-suite",
+  "version": "0.1.0-alpha.0",
+  "description": "One-command install for dsh-legal-intake and dsh-legal-clause.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.1-rc.3 <0.3.0",
+    "node": ">=24.9.0 <25"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "perrylink",
+    "suite",
+    "legal"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PerryLink/dsh-contract-suite.git"
+  },
+  "homepage": "https://perrylink.github.io/dsh-plugins/packages/dsh-contract-suite.html",
+  "bugs": {
+    "url": "https://github.com/PerryLink/dsh-contract-suite/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "dsh-legal-intake": "0.1.0-alpha.2",
+    "dsh-legal-clause": "0.1.0-alpha.4"
+  }
+}

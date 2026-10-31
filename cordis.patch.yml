@@ -1,0 +1,5 @@
+- insert:
+    - id: dsh-legal-intake
+      name: dsh-legal-intake
+    - id: dsh-legal-clause
+      name: dsh-legal-clause
