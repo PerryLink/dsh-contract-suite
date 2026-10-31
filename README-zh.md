@@ -2,11 +2,18 @@
 
 # dsh-contract-suite
 
+> **官方仓库。** 本包唯一官方仓库，由 PerryLink 维护；其他账号下的同名仓库与本项目无关。Apache-2.0。
+
 [![npm](https://img.shields.io/npm/v/dsh-contract-suite)](https://www.npmjs.com/package/dsh-contract-suite)
 [![CI](https://github.com/PerryLink/dsh-contract-suite/actions/workflows/ci.yml/badge.svg)](https://github.com/PerryLink/dsh-contract-suite/actions)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 [![dsh-plugin](https://img.shields.io/badge/dsh--plugin-%E2%9C%93-green)](https://github.com/topics/dsh-plugin)
 [![docs](https://img.shields.io/badge/docs-domain%20index-0b5fff)](https://perrylink.github.io/dsh-plugins/)
+[![Gitee](https://img.shields.io/badge/Gitee-aggregate-c71d23?logo=gitee)](https://gitee.com/perrylink/dsh-plugins)
+[![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-contract-suite?metric=downloads)](https://dshfind.com/plugins/PerryLink/dsh-contract-suite?ref=badge)
+[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
+[![Node](https://img.shields.io/badge/node-24.9%2B-brightgreen)](#)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-contract-suite)](https://www.npmjs.com/package/dsh-contract-suite)
 
 **一键安装合同法务套件：法务需求收件与条款/playbook 审查。**
 
@@ -19,6 +26,8 @@ dsh plugin --profile <profile> add dsh-contract-suite
 ```
 
 </div>
+
+> ⭐ 如果它帮到了你，点个 star 会让下一个人更容易找到它；没有任何功能被 star 解锁。
 
 ![Workflow diagram for dsh-contract-suite: local input, plugin, local output.](docs/assets/dsh-contract-suite-flow.svg)
 
@@ -82,6 +91,30 @@ dsh --profile <profile> --dump-config | grep dsh-contract-suite
 pnpm install --frozen-lockfile
 pnpm build && pnpm lint && pnpm typecheck && pnpm test
 ```
+
+## 兼容性
+
+| 维度 | 状态 |
+|---|---|
+| Harness | `dsh >=0.2.1-rc.3 <0.3.0` |
+| Node | `>=24.9.0 <25` |
+| Platforms | All; local files only |
+| 数据 | No network, no model call, no upload |
+
+## 权限与数据
+
+- 本地运行；不联网、不调用模型、不上传。
+- 只使用公开/合成 fixture；不含客户数据或客户证据。
+- alpha/partial；not counted，不作 GA 或生产可用声明。
+- 冻结包仍可安装；不再加新功能，只修真实故障。
+
+## 相关项目
+
+兄弟包与家族索引： [dsh-legal-intake](https://github.com/PerryLink/dsh-legal-intake) · [dsh-legal-clause](https://github.com/PerryLink/dsh-legal-clause)
+
+- [领域索引](https://perrylink.github.io/dsh-plugins/)
+- [Checker 家族](https://perrylink.github.io/zh/checkers/)
+- [主线家族](https://github.com/PerryLink/dsh-kit)
 
 ## 家族
 
