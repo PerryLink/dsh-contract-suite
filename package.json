@@ -22,7 +22,13 @@
     "README-es.md",
     "README-pt.md",
     "README-hi.md",
-    "docs/assets"
+    "docs/assets",
+    "SECURITY.md",
+    "PRIVACY.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "icon.svg"
   ],
   "keywords": [
     "deepseek-harness",
@@ -47,5 +53,6 @@
   "dependencies": {
     "dsh-legal-intake": "0.1.0-alpha.4",
     "dsh-legal-clause": "0.1.0-alpha.6"
-  }
+  },
+  "icon": "icon.svg"
 }
