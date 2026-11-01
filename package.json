@@ -1,6 +1,6 @@
 {
   "name": "dsh-contract-suite",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "description": "One-command install for dsh-legal-intake and dsh-legal-clause.",
   "type": "module",
   "license": "Apache-2.0",
@@ -52,8 +52,8 @@
     "access": "public"
   },
   "dependencies": {
-    "dsh-legal-intake": "0.1.0-alpha.6",
-    "dsh-legal-clause": "0.1.0-alpha.8"
+    "dsh-legal-intake": "0.1.0-alpha.7",
+    "dsh-legal-clause": "0.1.0-alpha.9"
   },
   "icon": "icon.svg"
 }
