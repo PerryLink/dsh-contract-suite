@@ -48,6 +48,8 @@ dsh --profile <profile> --dump-config | grep dsh-contract-suite
 dsh plugin --profile <profile> remove dsh-contract-suite
 ```
 
+卸载 suite 只移除 suite 行；成员包仍保持安装。如需移除，请逐个卸载。见 [SUITE.md](SUITE.md)。
+
 
 ### 安装通道
 
@@ -66,12 +68,12 @@ dsh plugin --profile <profile> remove dsh-contract-suite
 
 ## 成员
 
-工具名是稳定 API；说明已本地化。
+suite 只负责安装这些成员，本身没有工具面；版本由 `dependencies` 固定。
 
 | 成员 | 版本 |
 |---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.2` |
-| `dsh-legal-clause` | `0.1.0-alpha.4` |
+| `dsh-legal-intake` | `0.1.0-alpha.6` |
+| `dsh-legal-clause` | `0.1.0-alpha.8` |
 
 ## 快速开始
 

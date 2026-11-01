@@ -48,6 +48,8 @@ Desinstalar:
 dsh plugin --profile <profile> remove dsh-contract-suite
 ```
 
+Remover a suíte remove apenas a linha da suíte; os pacotes membros continuam instalados. Remova-os individualmente se necessário. Veja [SUITE.md](SUITE.md).
+
 
 ### Canais de instalação
 
@@ -66,12 +68,12 @@ Entrada e saída permanecem locais; nada é enviado.
 
 ## Membros
 
-Os nomes das ferramentas são a API estável; as descrições estão localizadas.
+A suíte apenas instala estes membros; não tem superfície de ferramentas própria. As versões são fixadas em `dependencies`.
 
 | Membro | Versão |
 |---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.2` |
-| `dsh-legal-clause` | `0.1.0-alpha.4` |
+| `dsh-legal-intake` | `0.1.0-alpha.6` |
+| `dsh-legal-clause` | `0.1.0-alpha.8` |
 
 ## Início rápido
 

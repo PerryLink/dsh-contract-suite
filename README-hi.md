@@ -48,6 +48,8 @@ dsh --profile <profile> --dump-config | grep dsh-contract-suite
 dsh plugin --profile <profile> remove dsh-contract-suite
 ```
 
+सूट हटाने से केवल सूट पंक्ति हटती है; सदस्य पैकेज इंस्टॉल रहते हैं। आवश्यकता हो तो उन्हें अलग से हटाएँ। देखें [SUITE.md](SUITE.md)।
+
 
 ### इंस्टॉल चैनल
 
@@ -66,12 +68,12 @@ npm अनुशंसित है; बाकी वर्ज़न पिन �
 
 ## सदस्य
 
-टूल नाम स्थिर API हैं; विवरण स्थानीयकृत हैं।
+यह सूट केवल इन सदस्यों को इंस्टॉल करता है; इसका अपना टूल सरफेस नहीं है। संस्करण `dependencies` में pinned हैं।
 
 | सदस्य | संस्करण |
 |---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.2` |
-| `dsh-legal-clause` | `0.1.0-alpha.4` |
+| `dsh-legal-intake` | `0.1.0-alpha.6` |
+| `dsh-legal-clause` | `0.1.0-alpha.8` |
 
 ## त्वरित शुरुआत
 

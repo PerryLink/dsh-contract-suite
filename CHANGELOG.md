@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0-alpha.5] — 2026-11-01
+
+### Changed
+
+- Documentation: five-language fixture/acceptance links now resolve on npm; added specific related-checker/tool links.
+- Marketplace metadata: taxonomy category, archetype, domains and status; docs page now shows the same.
+- Added `SUITE.md` with member pins, install/uninstall/upgrade semantics.
+
 All notable changes to `dsh-contract-suite` are documented here. The format follows Keep a Changelog; this project uses alpha versions.
 
 ## [0.1.0-alpha.4] — 2026-11-01
