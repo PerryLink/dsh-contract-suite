@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0-alpha.6] — 2026-11-01
+
+### Changed
+
+- Member pins updated to the 2026-11-01 releases:
+- `dsh-legal-intake` -> `0.1.0-alpha.7`
+- `dsh-legal-clause` -> `0.1.0-alpha.9`
+
 ## [0.1.0-alpha.5] — 2026-11-01
 
 ### Changed
