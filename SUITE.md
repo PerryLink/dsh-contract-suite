@@ -6,8 +6,8 @@
 
 | Member | Pinned version |
 |---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.9` |
-| `dsh-legal-clause` | `0.1.0-alpha.11` |
+| `dsh-legal-intake` | `0.1.0-alpha.10` |
+| `dsh-legal-clause` | `0.1.0-alpha.12` |
 
 ## Install
 
