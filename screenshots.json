@@ -1,0 +1,15 @@
+[
+  {
+    "path": "docs/assets/quickstart.png",
+    "kind": "quickstart",
+    "alt": "dsh-contract-suite quickstart terminal output",
+    "caption": "Real command: node samples/quickstart/run.mjs — dsh-contract-suite 0.1.0-alpha.8, synthetic profile, 2/2 members resolved (dsh-legal-intake 0.1.0-alpha.10, dsh-legal-clause 0.1.0-alpha.12), offline, golden matches. Rendered from the captured terminal output.",
+    "command": "node samples/quickstart/run.mjs",
+    "run_at": "2026-11-02T14:59:53Z",
+    "output_sha256": "e6862e344bfdb23ba5b7db4ca23cc17abafd5151936b2e598bf5e78c4f3babd8",
+    "output_path": "samples/quickstart/expected/result.json",
+    "log": "docs/assets/quickstart.log",
+    "log_sha256": "ed7846f6f0e80882cb09998d448f5b4e683472b2c79faa9aa4f20ef9dcb0e65c",
+    "image_sha256": "cd666a1219ee4b8058895749480b5e572eb1fc921b02c2fee0390d20d87a432c"
+  }
+]

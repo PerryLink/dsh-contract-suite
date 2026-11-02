@@ -1,0 +1,10 @@
+$ node samples/quickstart/run.mjs
+dsh-contract-suite quickstart (offline)
+suite:    dsh-contract-suite 0.1.0-alpha.8
+profile:  contract-demo (synthetic, 2/2 rows enabled)
+members:  2/2 resolved
+  dsh-legal-intake     0.1.0-alpha.10   [manifest pin]    profile=enabled
+  dsh-legal-clause     0.1.0-alpha.12   [manifest pin]    profile=enabled
+network:  false (no fetch, no registry call)
+golden:   samples/quickstart/expected/result.json matches
+quickstart ok

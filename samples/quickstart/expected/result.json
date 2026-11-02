@@ -1,0 +1,32 @@
+{
+  "suite": "dsh-contract-suite",
+  "version": "0.1.0-alpha.8",
+  "sample": "samples/quickstart/input/profile.json",
+  "network": false,
+  "profile": {
+    "name": "contract-demo",
+    "kind": "synthetic",
+    "rows": 2,
+    "enabled": 2,
+    "missing": 0
+  },
+  "members": [
+    {
+      "id": "dsh-legal-intake",
+      "version": "0.1.0-alpha.10",
+      "pin": "0.1.0-alpha.10",
+      "profile_row": "enabled"
+    },
+    {
+      "id": "dsh-legal-clause",
+      "version": "0.1.0-alpha.12",
+      "pin": "0.1.0-alpha.12",
+      "profile_row": "enabled"
+    }
+  ],
+  "summary": {
+    "members": 2,
+    "resolved": 2,
+    "ok": true
+  }
+}

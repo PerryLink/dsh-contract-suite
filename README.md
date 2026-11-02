@@ -33,6 +33,82 @@ dsh plugin --profile <profile> add dsh-contract-suite
 
 *Workflow: local input → plugin → local output. No model call is required.*
 
+## One line
+
+Install the two contract packages in one command and verify every member version resolves.
+
+## Best for / not for
+
+- **Best for:** installing dsh-legal-intake and dsh-legal-clause into one DSH profile; keeping both members on one pinned version set; confirming no member row is missing right after install.
+- **Not for:** installing only one package (install that member directly); expecting the suite itself to review contracts (it has no tool surface — the members do); OCR, external CLM, or e-sign integration.
+
+## Input
+
+- The install itself reads no business documents.
+- The bundled sample reads `samples/quickstart/input/profile.json` (synthetic profile dump, < 1 KB), plus this package's `package.json` and `cordis.patch.yml`. It reads no other directory and no customer contract.
+- Each member's own input (contract text, clause lists, playbook) is documented in that member's README; the suite does not change it.
+
+## Output
+
+- The terminal prints the member list, pinned version, and where each version was resolved from; exit code `0` means 2/2 resolved.
+- `node samples/quickstart/run.mjs --json` prints the golden JSON stored at `samples/quickstart/expected/result.json`.
+- No files are written, no model is called, no network is used, nothing is uploaded, and source contracts are untouched.
+
+## Example
+
+Paste this into DSH:
+
+> 帮我装好合同法务两件套（合同录入、条款审查），确认两个成员包都能解析，并列出各自版本。
+
+Then run the bundled sample from the package directory (offline, no dependency install needed):
+
+```sh
+node samples/quickstart/run.mjs
+```
+
+Real output:
+
+```text
+dsh-contract-suite quickstart (offline)
+suite:    dsh-contract-suite 0.1.0-alpha.8
+profile:  contract-demo (synthetic, 2/2 rows enabled)
+members:  2/2 resolved
+  dsh-legal-intake     0.1.0-alpha.10   [manifest pin]    profile=enabled
+  dsh-legal-clause     0.1.0-alpha.12   [manifest pin]    profile=enabled
+network:  false (no fetch, no registry call)
+golden:   samples/quickstart/expected/result.json matches
+quickstart ok
+```
+
+![dsh-contract-suite quickstart real terminal output](docs/assets/quickstart.png)
+
+The screenshot is the real output of the command above; the golden file and screenshot metadata are in `screenshots.json`.
+
+## Permissions
+
+Read: `samples/quickstart/input/profile.json`, `cordis.patch.yml`, `package.json`; no other directory
+Write: none (R0 — terminal output only; no `$DSH_HOME` writes, source files untouched)
+Network: no
+External systems: none
+
+## FAQ
+
+1. **The install fails or a member is missing.** Run `node samples/quickstart/run.mjs`. If the two member lists disagree it raises `E_SUITE_PATCH_MISMATCH`; align them as described in [TROUBLESHOOTING.md](TROUBLESHOOTING.md), then reinstall.
+2. **The version does not match the suite declaration.** The suite pins exact member versions; upgrading one member alone raises `E_SUITE_VERSION_MISMATCH`. Remove `node_modules` in that profile and reinstall the suite.
+3. **Can the suite review my contracts?** No — the suite only installs members. Use the member packages for intake and clause review; the bundled sample uses a synthetic profile and reads no real contract.
+4. **Does uninstalling the suite remove the members?** No. Removing the suite removes only its row; member packages stay installed until you remove them.
+
+## Version
+
+Current version: `0.1.0-alpha.8` (matches `package.json`).
+
+Local verification (2026-11-02):
+
+```sh
+node --test test/suite.test.mjs            # 8 passed, 0 failed
+node samples/quickstart/run.mjs --check    # golden matches
+```
+
 ## Install
 
 Install and verify:
@@ -72,33 +148,18 @@ The suite only installs these members; it has no tool surface of its own. Versio
 
 | Member | Version |
 |---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.6` |
-| `dsh-legal-clause` | `0.1.0-alpha.8` |
+| `dsh-legal-intake` | `0.1.0-alpha.10` |
+| `dsh-legal-clause` | `0.1.0-alpha.12` |
 
-## Quick start
+## Post-install self-check
 
-```sh
-dsh plugin --profile <profile> add dsh-contract-suite
-dsh --profile <profile> --dump-config | grep dsh-contract-suite
-```
-
-![Terminal demo: real dsh-contract-suite install output](docs/assets/dsh-contract-suite-install.gif)
-
-*Real `dsh plugin add dsh-finops-suite` output in a temporary profile; the path is temporary.*
-
-## Examples
-
-### Fixture-backed example
-
-Command:
+Run the bundled sample after install to confirm both members resolve:
 
 ```sh
-dsh plugin --profile <profile> add dsh-contract-suite
+node samples/quickstart/run.mjs
 ```
 
-This is a fixture-backed acceptance row, not a customer run; no output is invented.
-
-![Real install output](docs/assets/dsh-contract-suite-install.gif)
+Each member's tool surface lives in its own repository; the suite ships no tools.
 
 ## Limits
 

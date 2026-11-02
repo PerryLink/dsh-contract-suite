@@ -1,0 +1,5 @@
+req_id,metric,threshold,actual,script,evidence_sha256,pass,source,counted
+SUITE-01,成员清单与 dependencies 一致,members=2,2,scripts/gate.mjs,e6862e344bfdb23ba5b7db4ca23cc17abafd5151936b2e598bf5e78c4f3babd8,true,public/synthetic,false
+SUITE-02,quickstart 样例与金标一致,1/1,1,node samples/quickstart/run.mjs --check,e6862e344bfdb23ba5b7db4ca23cc17abafd5151936b2e598bf5e78c4f3babd8,true,synthetic/quickstart,true
+SUITE-03,离线运行网络调用数,0,0,scripts/gate.mjs,e6862e344bfdb23ba5b7db4ca23cc17abafd5151936b2e598bf5e78c4f3babd8,true,public/synthetic,false
+SUITE-04,node --test 通过数,8/8,8,node --test test/suite.test.mjs,e6862e344bfdb23ba5b7db4ca23cc17abafd5151936b2e598bf5e78c4f3babd8,true,public/synthetic,false

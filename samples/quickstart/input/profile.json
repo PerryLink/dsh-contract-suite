@@ -1,0 +1,10 @@
+{
+  "_note": "Synthetic DSH profile dump for the dsh-contract-suite quickstart. No user, customer or production data.",
+  "profile": "contract-demo",
+  "kind": "synthetic",
+  "created_at": "2026-11-02T00:00:00Z",
+  "rows": [
+    { "id": "dsh-legal-intake", "version": "0.1.0-alpha.10", "enabled": true },
+    { "id": "dsh-legal-clause", "version": "0.1.0-alpha.12", "enabled": true }
+  ]
+}
