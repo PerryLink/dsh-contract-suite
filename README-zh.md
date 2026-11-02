@@ -70,11 +70,11 @@ node samples/quickstart/run.mjs
 
 ```text
 dsh-contract-suite quickstart (offline)
-suite:    dsh-contract-suite 0.1.0-alpha.8
+suite:    dsh-contract-suite 0.1.0-alpha.9
 profile:  contract-demo (synthetic, 2/2 rows enabled)
 members:  2/2 resolved
-  dsh-legal-intake     0.1.0-alpha.10   [manifest pin]    profile=enabled
-  dsh-legal-clause     0.1.0-alpha.12   [manifest pin]    profile=enabled
+  dsh-legal-intake     0.1.0-alpha.9   [manifest pin]    profile=enabled
+  dsh-legal-clause     0.1.0-alpha.9   [manifest pin]    profile=enabled
 network:  false (no fetch, no registry call)
 golden:   samples/quickstart/expected/result.json matches
 quickstart ok
@@ -100,7 +100,7 @@ quickstart ok
 
 ## 版本
 
-当前版本：`0.1.0-alpha.8`（与 `package.json` 一致）。
+当前版本：`0.1.0-alpha.9`（与 `package.json` 一致）。
 
 本地验证（2026-11-02）：
 
@@ -148,8 +148,8 @@ suite 只负责安装这些成员，本身没有工具面；版本由 `dependenc
 
 | 成员 | 版本 |
 |---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.10` |
-| `dsh-legal-clause` | `0.1.0-alpha.12` |
+| `dsh-legal-intake` | `0.1.0-alpha.9` |
+| `dsh-legal-clause` | `0.1.0-alpha.9` |
 
 ## 安装后自检
 

@@ -70,11 +70,11 @@ Real output:
 
 ```text
 dsh-contract-suite quickstart (offline)
-suite:    dsh-contract-suite 0.1.0-alpha.8
+suite:    dsh-contract-suite 0.1.0-alpha.9
 profile:  contract-demo (synthetic, 2/2 rows enabled)
 members:  2/2 resolved
-  dsh-legal-intake     0.1.0-alpha.10   [manifest pin]    profile=enabled
-  dsh-legal-clause     0.1.0-alpha.12   [manifest pin]    profile=enabled
+  dsh-legal-intake     0.1.0-alpha.9   [manifest pin]    profile=enabled
+  dsh-legal-clause     0.1.0-alpha.9   [manifest pin]    profile=enabled
 network:  false (no fetch, no registry call)
 golden:   samples/quickstart/expected/result.json matches
 quickstart ok
@@ -100,7 +100,7 @@ External systems: none
 
 ## Version
 
-Current version: `0.1.0-alpha.8` (matches `package.json`).
+Current version: `0.1.0-alpha.9` (matches `package.json`).
 
 Local verification (2026-11-02):
 
@@ -148,8 +148,8 @@ The suite only installs these members; it has no tool surface of its own. Versio
 
 | Member | Version |
 |---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.10` |
-| `dsh-legal-clause` | `0.1.0-alpha.12` |
+| `dsh-legal-intake` | `0.1.0-alpha.9` |
+| `dsh-legal-clause` | `0.1.0-alpha.9` |
 
 ## Post-install self-check
 
