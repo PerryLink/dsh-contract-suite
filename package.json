@@ -20,7 +20,9 @@
       "writes": [],
       "network": false,
       "external": []
-    }
+    },
+    "capabilities": [],
+    "labels": []
   },
   "scripts": {
     "quickstart": "node samples/quickstart/run.mjs",
