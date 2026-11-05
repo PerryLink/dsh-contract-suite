@@ -1,25 +1,29 @@
 <div align="center">
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-flow-dark.svg">
+  <img src="docs/assets/dsh-contract-suite-flow-light.svg" width="100%" alt="dsh-contract-suite 安装流程：dsh plugin add → cordis.patch.yml 两行成员 → package.json 两个精确版本 → samples/quickstart/run.mjs → 2/2 resolved；错误码 E_SUITE_PATCH_MISMATCH / E_SUITE_VERSION_MISMATCH / E_SUITE_MANIFEST_MISSING">
+</picture>
+
 # dsh-contract-suite
 
-> **Official repository.** The only official repository of this package, maintained by PerryLink. Same-name repositories under other accounts are not affiliated. Apache-2.0.
+**一条命令装齐合同法务两件套，装完立刻核对两个成员版本是否都能解析。**
 
-[![npm](https://img.shields.io/npm/v/dsh-contract-suite)](https://www.npmjs.com/package/dsh-contract-suite)
-[![CI](https://github.com/PerryLink/dsh-contract-suite/actions/workflows/ci.yml/badge.svg)](https://github.com/PerryLink/dsh-contract-suite/actions)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
-[![dsh-plugin](https://img.shields.io/badge/dsh--plugin-%E2%9C%93-green)](https://github.com/topics/dsh-plugin)
-[![docs](https://img.shields.io/badge/docs-domain%20index-0b5fff)](https://perrylink.github.io/dsh-plugins/)
-[![Gitee](https://img.shields.io/badge/Gitee-aggregate-c71d23?logo=gitee)](https://gitee.com/perrylink/dsh-plugins)
+面向 DeepSeek Harness 的纯安装型套件：把合同需求收件（`dsh-legal-intake`）与条款/playbook 审查（`dsh-legal-clause`）钉在同一组精确版本上一起装；套件本身没有工具面，不读合同、不联网、不调用模型。
+
+[安装](#三步上手) · [配置](#配置) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
+
+[![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
+[![DSH](https://img.shields.io/badge/DSH-%E2%89%A50.2.1--rc.3%20%3C0.3.0-4B67B4?style=flat-square&labelColor=2B3245)](#兼容性)
+[![npm](https://img.shields.io/npm/v/dsh-contract-suite?style=flat-square&labelColor=2B3245&color=CB3837)](https://www.npmjs.com/package/dsh-contract-suite)
+[![CI](https://img.shields.io/github/actions/workflow/status/PerryLink/dsh-contract-suite/ci.yml?branch=main&label=CI&style=flat-square&labelColor=2B3245)](https://github.com/PerryLink/dsh-contract-suite/actions/workflows/ci.yml)
+[![Node](https://img.shields.io/badge/node-%3E%3D24.9.0%20%3C25-339933?style=flat-square&labelColor=2B3245)](#兼容性)
+
+[![Stars](https://img.shields.io/github/stars/PerryLink/dsh-contract-suite?style=flat-square&labelColor=2B3245)](https://github.com/PerryLink/dsh-contract-suite/stargazers)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-contract-suite?style=flat-square&labelColor=2B3245&color=CB3837)](https://www.npmjs.com/package/dsh-contract-suite)
 [![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-contract-suite?metric=downloads)](https://dshfind.com/plugins/PerryLink/dsh-contract-suite?ref=badge)
-[![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
-[![Node](https://img.shields.io/badge/node-24.9%2B-brightgreen)](#)
-[![npm downloads](https://img.shields.io/npm/dm/dsh-contract-suite)](https://www.npmjs.com/package/dsh-contract-suite)
-
-**One-command install for dsh-legal-intake and dsh-legal-clause.**
-
-> **Status: alpha / public-synthetic / partial / not counted / not GA.** No customer evidence, customer data, or production-readiness claim.
-
-[English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
+[![DSH Market](https://img.shields.io/badge/DSH_Market-listed-4B67B4?style=flat-square&labelColor=2B3245)](https://dsh.market/)
+[![Gitee](https://img.shields.io/badge/Gitee-aggregate-C71D23?style=flat-square&labelColor=2B3245&logo=gitee)](https://gitee.com/perrylink/dsh-plugins)
 
 ```sh
 dsh plugin --profile <profile> add dsh-contract-suite
@@ -27,185 +31,287 @@ dsh plugin --profile <profile> add dsh-contract-suite
 
 </div>
 
-> ⭐ If this helps, a star makes it easier for the next person to find it. Nothing is gated behind it.
+<sub>社区套件，与 DeepSeek 官方无关。唯一官方仓库：<https://github.com/PerryLink/dsh-contract-suite>（Apache-2.0）。</sub>
 
-![Workflow diagram for dsh-contract-suite: local input, plugin, local output.](docs/assets/dsh-contract-suite-flow.svg)
+## 它是什么
 
-*Workflow: local input → plugin → local output. No model call is required.*
+`dsh-contract-suite` 是一个 **install-only 套件**：它不审合同，只负责把两个成员包一次性装进同一个 DSH profile，并把版本钉死。`package.json#dependencies` 固定 `dsh-legal-intake`（合同需求收件）与 `dsh-legal-clause`（条款/playbook 审查）的精确版本，`cordis.patch.yml` 固定插入两行成员。安装后跑自带离线样例，终端逐行给出成员、固定版本与解析结果——2/2 resolved 才算装全。全程不联网、不调用模型、不写文件。
 
-## One line
+## 适合与不适合
 
-Install the two contract packages in one command and verify every member version resolves.
+- **适合**：在同一个 DSH profile 里同时装合同录入与条款审查；需要把两个成员锁在同一组版本；装完先确认成员行一个不少。
+- **不适合**：只想装其中一件（直接装对应成员包更轻）；想让 suite 自己审合同（suite 没有工具面，审查由成员包完成）；需要 OCR、外部 CLM 或 e-sign 对接。
 
-## Best for / not for
+## 输入与输出
 
-- **Best for:** installing dsh-legal-intake and dsh-legal-clause into one DSH profile; keeping both members on one pinned version set; confirming no member row is missing right after install.
-- **Not for:** installing only one package (install that member directly); expecting the suite itself to review contracts (it has no tool surface — the members do); OCR, external CLM, or e-sign integration.
+**输入**
 
-## Input
+- 安装动作本身不读业务单据。
+- 自带样例只读 `samples/quickstart/input/profile.json`（合成 profile dump，< 1 KB）、本包 `package.json` 与 `cordis.patch.yml`；不读其他目录、不读客户合同。
+- 成员包各自的输入（合同文本、条款清单、playbook）见成员仓库 README；本 suite 不改变它们的输入输出。
 
-- The install itself reads no business documents.
-- The bundled sample reads `samples/quickstart/input/profile.json` (synthetic profile dump, < 1 KB), plus this package's `package.json` and `cordis.patch.yml`. It reads no other directory and no customer contract.
-- Each member's own input (contract text, clause lists, playbook) is documented in that member's README; the suite does not change it.
+**输出**
 
-## Output
+- 终端给出成员清单、固定版本、解析来源；2/2 表示两个成员都可解析。
+- `node samples/quickstart/run.mjs --json` 输出金标 JSON，文件在 `samples/quickstart/expected/result.json`；`--check` 与金标逐字段比对。
+- 不写任何文件、不调用模型、不联网、不上传；不改动原合同。
 
-- The terminal prints the member list, pinned version, and where each version was resolved from; exit code `0` means 2/2 resolved.
-- `node samples/quickstart/run.mjs --json` prints the golden JSON stored at `samples/quickstart/expected/result.json`.
-- No files are written, no model is called, no network is used, nothing is uploaded, and source contracts are untouched.
+## 三步上手
 
-## Example
+1. **安装**（四选一）：
 
-Paste this into DSH:
+   ```sh
+   # npm 通道（推荐，已发布版本）
+   dsh plugin --profile <profile> add dsh-contract-suite
+   # git 通道（最新 main）
+   dsh plugin --profile <profile> add github:PerryLink/dsh-contract-suite
+   # tarball 通道：本仓库 pnpm pack 后
+   dsh plugin --profile <profile> add ./dsh-contract-suite-<version>.tgz
+   # 1024 商店通道
+   npm i -g dsh1024 && dsh1024 plugin --profile <profile> add dsh-contract-suite
+   ```
+
+   无构建步骤——纯 ESM，`src/` 与 `samples/` 即发布内容。
+
+2. **装配**（默认即完成）：bundle 自动应用 `cordis.patch.yml`，两行成员进入 profile：
+
+   ```yaml
+   - insert:
+       - id: dsh-legal-intake
+         name: dsh-legal-intake
+       - id: dsh-legal-clause
+         name: dsh-legal-clause
+   ```
+
+   套件没有配置键；成员各自的配置见成员仓库 README。
+
+3. **验证已生效**：
+
+   ```sh
+   dsh --profile <profile> --dump-config | grep dsh-contract-suite
+   node samples/quickstart/run.mjs
+   ```
+
+   真实输出（2026-11-05 实跑，成员解析段）：
+
+   ```text
+   dsh-contract-suite quickstart (offline)
+   suite:    dsh-contract-suite 0.1.0-alpha.10
+   profile:  contract-demo (synthetic, 2/2 rows enabled)
+   members:  2/2 resolved
+     dsh-legal-intake     0.1.0-alpha.10   [manifest pin]    profile=enabled
+     dsh-legal-clause     0.1.0-alpha.12   [manifest pin]    profile=enabled
+   network:  false (no fetch, no registry call)
+   ```
+
+**卸载**：`dsh plugin --profile <profile> remove dsh-contract-suite`（或从 profile patch 删掉该行）。卸载只移除 suite 行，成员包仍保持安装。
+
+## 核心能力
+
+- **一键装齐** —— 一条 `dsh plugin add` 同时装上两个成员，不需要分别记两个包名与版本。
+- **版本共锁** —— 成员版本在 `package.json#dependencies` 里精确固定；`node_modules` 里成员版本一旦漂移就报 `E_SUITE_VERSION_MISMATCH`，绝不静默混装。升级成员要等新套件版本，不要单独升级。
+- **成员行对账** —— `cordis.patch.yml` 与 `dependencies` 双向核对：少一行、多一行、重复 id、`id` 与 `name` 不匹配都会报 `E_SUITE_PATCH_MISMATCH`；清单缺失或非法 JSON 报 `E_SUITE_MANIFEST_MISSING`。
+- **离线自检** —— `samples/quickstart/run.mjs` 只读三个文件，打印成员、固定版本与解析来源；`--json` 给机器可读结果，`--check` 与金标比对。零网络、零写入。
+- **零工具面** —— 不注册工具、命令、slot、HTTP 路由或服务键，只插入两行成员；成员保持独立，可单独安装、单独卸载。
+- **证据可复现** —— `ACCEPTANCE.csv` 记录公开验收行（`counted` 标明是否计入），`screenshots.json` 记录截图命令、时间与 SHA-256，`node scripts/acceptance.mjs` 可重建验收行。
+
+## 成员与版本
+
+套件只负责安装这些成员，本身没有工具面；版本由 `dependencies` 固定。
+
+| 成员 | 固定版本 |
+|---|---:|
+| `dsh-legal-intake` | `0.1.0-alpha.10` |
+| `dsh-legal-clause` | `0.1.0-alpha.12` |
+
+套件当前版本：`0.1.0-alpha.10`（与 `package.json` 一致）。
+
+## 示例
+
+把这句话粘进 DSH：
 
 > 帮我装好合同法务两件套（合同录入、条款审查），确认两个成员包都能解析，并列出各自版本。
 
-Then run the bundled sample from the package directory (offline, no dependency install needed):
+装好后在包目录跑自带样例（离线，不装依赖也能跑）：
 
 ```sh
 node samples/quickstart/run.mjs
 ```
 
-Real output:
+真实输出见上方「三步上手」第 3 步。截图是 2026-11-02 捕获的同一条命令的真实终端输出（当时 suite 版本为 `0.1.0-alpha.8`，成员版本与现在一致）：
 
-```text
-dsh-contract-suite quickstart (offline)
-suite:    dsh-contract-suite 0.1.0-alpha.9
-profile:  contract-demo (synthetic, 2/2 rows enabled)
-members:  2/2 resolved
-  dsh-legal-intake     0.1.0-alpha.9   [manifest pin]    profile=enabled
-  dsh-legal-clause     0.1.0-alpha.9   [manifest pin]    profile=enabled
-network:  false (no fetch, no registry call)
-golden:   samples/quickstart/expected/result.json matches
-quickstart ok
+![dsh-contract-suite quickstart 真实运行输出](docs/assets/quickstart.png)
+
+截图记录（命令、时间、输出 SHA-256）见 `screenshots.json`。
+
+## 配置
+
+套件是 install-only bundle，**没有 Config schema，也没有运行时可调键**。可调的只有装配面与安装目标：
+
+| 可调项 | 位置 | 当前值 | 说明 |
+|---|---|---|---|
+| 成员集合 | `cordis.patch.yml` | `dsh-legal-intake`、`dsh-legal-clause` | 每个成员一行 `id` + `name`；必须与 `dependencies` 完全一致 |
+| 成员版本 | `package.json#dependencies` | `0.1.0-alpha.10`、`0.1.0-alpha.12` | 精确版本；成员单独升级会触发 `E_SUITE_VERSION_MISMATCH` |
+| 安装目标 | `dsh plugin --profile <profile>` | 由你指定 | 套件只装进指定 profile |
+| 演示元数据 | `package.json#dsh.demo` | `sample` / `prompt` / `expect` / `screenshot` | 声明离线样例、提示语与证据路径 |
+
+成员各自的配置（合同文本、条款清单、playbook 等）在成员仓库 README；本套件不读取、不改写，也不会覆盖成员的配置行。
+
+<details>
+<summary>完整装配文件（cordis.patch.yml）</summary>
+
+```yaml
+- insert:
+    - id: dsh-legal-intake
+      name: dsh-legal-intake
+    - id: dsh-legal-clause
+      name: dsh-legal-clause
 ```
 
-![dsh-contract-suite quickstart real terminal output](docs/assets/quickstart.png)
+</details>
 
-The screenshot is the real output of the command above; the golden file and screenshot metadata are in `screenshots.json`.
+<details>
+<summary>安装通道对比</summary>
 
-## Permissions
+| 通道 | 命令 | 适用 |
+|---|---|---|
+| npm（推荐） | `dsh plugin --profile <profile> add dsh-contract-suite` | 常规安装，取已发布版本 |
+| git | `dsh plugin --profile <profile> add github:PerryLink/dsh-contract-suite` | 跟踪最新 main |
+| tarball | `pnpm pack` 后 `dsh plugin --profile <profile> add ./dsh-contract-suite-<version>.tgz` | 离线、固定产物 |
+| 1024 商店 | `npm i -g dsh1024` 后 `dsh1024 plugin --profile <profile> add dsh-contract-suite` | 经 1024 渠道安装 |
 
-Read: `samples/quickstart/input/profile.json`, `cordis.patch.yml`, `package.json`; no other directory
-Write: none (R0 — terminal output only; no `$DSH_HOME` writes, source files untouched)
-Network: no
-External systems: none
+</details>
 
 ## FAQ
 
-1. **The install fails or a member is missing.** Run `node samples/quickstart/run.mjs`. If the two member lists disagree it raises `E_SUITE_PATCH_MISMATCH`; align them as described in [TROUBLESHOOTING.md](TROUBLESHOOTING.md), then reinstall.
-2. **The version does not match the suite declaration.** The suite pins exact member versions; upgrading one member alone raises `E_SUITE_VERSION_MISMATCH`. Remove `node_modules` in that profile and reinstall the suite.
-3. **Can the suite review my contracts?** No — the suite only installs members. Use the member packages for intake and clause review; the bundled sample uses a synthetic profile and reads no real contract.
-4. **Does uninstalling the suite remove the members?** No. Removing the suite removes only its row; member packages stay installed until you remove them.
+<details>
+<summary>装不上，或装完少一个成员怎么办？</summary>
 
-## Version
+先跑 `node samples/quickstart/run.mjs`。如果两处成员列表不一致，会报 `E_SUITE_PATCH_MISMATCH`；按 [TROUBLESHOOTING.md](TROUBLESHOOTING.md) 把 `cordis.patch.yml` 与 `dependencies` 对齐后重装。如果是清单缺失或 tarball 不完整，会报 `E_SUITE_MANIFEST_MISSING`，在包根目录重跑或重新安装即可。
 
-Current version: `0.1.0-alpha.9` (matches `package.json`).
+</details>
 
-Local verification (2026-11-02):
+<details>
+<summary>版本和套件声明的不一样怎么办？</summary>
 
-```sh
-node --test test/suite.test.mjs            # 8 passed, 0 failed
-node samples/quickstart/run.mjs --check    # golden matches
-```
+套件固定成员版本，承诺的是一组固定版本。单独升级某个成员、或 `node_modules` 里残留旧版本，都会报 `E_SUITE_VERSION_MISMATCH`。删掉该 profile 下的 `node_modules` 后重装 suite；确实需要新成员版本时，等套件发布新的固定版本，不要只升成员。
 
-## Install
+</details>
 
-Install and verify:
+<details>
+<summary>suite 能直接审我的合同吗？</summary>
 
-```sh
-dsh plugin --profile <profile> add dsh-contract-suite
-dsh --profile <profile> --dump-config | grep dsh-contract-suite
-```
+不能。suite 只负责一次装齐成员，本身没有工具面；合同录入与条款审查各自用成员包的工具。自带样例只用合成 profile，不读真实合同、不产生审查结论。
 
-Uninstall:
+</details>
 
-```sh
-dsh plugin --profile <profile> remove dsh-contract-suite
-```
+<details>
+<summary>卸载 suite 会把成员也删掉吗？</summary>
 
-Removing the suite removes only the suite row; the member packages stay installed. Remove them individually if needed. See [SUITE.md](SUITE.md).
+不会。卸载只移除 suite 行，成员包保留；不需要时再逐个卸载。成员是独立的 Cordis 行，也可以完全不装 suite、单独安装。
 
+</details>
 
-### Install channels
+<details>
+<summary>数据存哪？会联网或上传吗？</summary>
 
-npm is the recommended channel; the others are for pinning or offline use.
+安装本身不读业务单据；自带样例只读 `samples/quickstart/input/profile.json`、`cordis.patch.yml` 与 `package.json` 三个文件。不写文件、不联网、不上传、不调用模型。唯一会联网的是开发侧的 `scripts/check.mjs`（查 registry 确认成员版本存在），它不在安装与运行时执行。
 
-- **npm (recommended):** `dsh plugin --profile <profile> add dsh-contract-suite`
-- **git channel:** `dsh plugin --profile <profile> add github:PerryLink/dsh-contract-suite`
-- **tarball:** `pnpm pack` then `dsh plugin --profile <profile> add ./dsh-contract-suite-<version>.tgz`
-- **1024 store:** `npm i -g dsh1024` then `dsh1024 plugin --profile <profile> add dsh-contract-suite`
+</details>
 
-## What it does
+## 权限与数据
 
-One-command install for dsh-legal-intake and dsh-legal-clause. Runs locally on DeepSeek Harness. The table below is the exact tool surface; the examples use the real command surface.
+- 读：`samples/quickstart/input/profile.json`、`cordis.patch.yml`、`package.json`；不读其他目录
+- 写：无（R0，只打印到终端；不写 `$DSH_HOME`、不改原文件）
+- 联网：否
+- 外部系统：无
+- 公开/合成 fixture only；不含客户数据，也不含客户证据。
+- alpha/partial；not counted，不作 GA 或生产可用声明。
 
-Input and output stay local; nothing is uploaded.
+## 安全边界
 
-## Members
+- **只安装，不处理内容。** 套件没有工具面、没有命令、不注册 slot 或 HTTP 路由；合同内容始终留在成员包与你的本地环境。
+- **公开/合成样例。** 仓库内只有公开或合成的 fixture；不含客户数据、客户合同、客户证据，也不作生产可用声明。
+- **失败关闭。** 清单缺失、patch 与依赖不一致、成员版本漂移都在加载/自检期以明确的 `E_` 错误码失败，不静默降级、不混装。
+- **不改成员配置。** 组合包 patch 只 `insert` 自己的两行，不覆写内置行或成员行的 `config`。
+- **权限最小化。** 安装不写 `$DSH_HOME`、不改原文件；成员工具各自的权限与数据边界见成员仓库与各自 `ACCEPTANCE`。
 
-The suite only installs these members; it has no tool surface of its own. Versions are pinned in `dependencies`.
+## 已知限制
 
-| Member | Version |
-|---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.9` |
-| `dsh-legal-clause` | `0.1.0-alpha.9` |
+- **install-only。** 套件本身没有工具面，不能审合同，也不做 OCR、外部 CLM 或 e-sign 对接；这些能力（如果有）属于成员包。
+- **alpha / partial / not counted。** 不作 GA 或生产可用声明；公开验收行里 `counted=false` 的项不计入正式验收。
+- **版本由套件发布决定。** 成员版本钉死后，单独升级成员会失败；要换成员版本必须等新套件发布。
+- **样例金标停留在上一版。** 仓内 `samples/quickstart/expected/result.json` 记录的是 `0.1.0-alpha.8`，而当前发布物是 `0.1.0-alpha.10`；`run.mjs --check` 与依赖它的测试会报金标不一致。以 `run.mjs --json` 的实际输出为准，重新生成金标即可恢复。此问题不影响安装与成员解析。
+- **无配置键。** 成员的可调项在各自 README；套件不提供额外开关。
 
-## Post-install self-check
+## 与其他 DSH 插件的互操作性
 
-Run the bundled sample after install to confirm both members resolve:
+- **无共享服务/端口/存储域。** 套件与成员不占用共享 service、端口或 storage domain；成员是独立 Cordis 行。
+- **无工具/命令/slot/路由注册。** 套件不注册任何工具、命令、客户端 slot 或 `webServer` 前缀，因此不存在重名与座位争抢。
+- **只增不改。** 组合包 patch 只 `insert` 成员行，不覆写内置行或成员行的 `config`。
+- **可单独安装。** 成员可以脱离套件单独装、单独卸；卸载 suite 不会带走成员。
+- **渠道无关。** npm、git、tarball、1024 商店装出来的是同一组成员与版本。
 
-```sh
-node samples/quickstart/run.mjs
-```
+## 兼容性
 
-Each member's tool surface lives in its own repository; the suite ships no tools.
-
-## Limits
-
-- Public/synthetic only; no customer data or customer evidence.
-- Alpha/partial, not counted, no GA or production-readiness claim.
-- No model or network call unless a tool explicitly says so.
-- The exact per-tool boundaries are in the table and `ACCEPTANCE.csv`.
-
-## Public sample
-
-Public/synthetic fixtures live in `fixtures/`; `ACCEPTANCE.csv` records the public checks with `counted=false`.
-
-## Development
-
-```sh
-pnpm install --frozen-lockfile
-pnpm build && pnpm lint && pnpm typecheck && pnpm test
-```
-
-## Compatibility
-
-| Surface | Status |
+| 维度 | 状态 |
 |---|---|
 | Harness | `dsh >=0.2.1-rc.3 <0.3.0` |
 | Node | `>=24.9.0 <25` |
-| Platforms | All; local files only |
-| Data | No network, no model call, no upload |
+| 平台 | 所有 DSH 可运行平台；只读本地文件 |
+| 数据 | 不联网、不调用模型、不上传 |
 
-## Permissions & data
+## 生态与质量
 
-- Runs locally; no network, no model call, no upload.
-- Public/synthetic fixtures only; no customer data, no customer evidence.
-- Alpha/partial; not counted, no GA or production-readiness claim.
+- [领域索引](https://perrylink.github.io/dsh-plugins/)（包目录与安装入口）
+- [Checker 家族](https://perrylink.github.io/zh/checkers/)（检查器插件一览）
+- [主线家族](https://github.com/PerryLink/dsh-kit)（安装 spec 与家族清单）
+- [Gitee 聚合镜像](https://gitee.com/perrylink/dsh-plugins)（以 GitHub 为准）
+- [dshfind 插件页](https://dshfind.com/plugins/PerryLink/dsh-contract-suite)（安装量与排名）
+- [DSH Market](https://dsh.market/)（已上架）
+- **1024 商店渠道**：先 `npm i -g dsh1024`，再 `dsh1024 plugin --profile <profile> add dsh-contract-suite`（计入 [deepseek1024.com](https://deepseek1024.com) 安装排行）
+- **证据文件**：[`ACCEPTANCE.csv`](ACCEPTANCE.csv) · [`screenshots.json`](screenshots.json) · [`samples/quickstart/expected/result.json`](samples/quickstart/expected/result.json)
 
-## Related work
+## 开发
 
-Sibling packages and family indexes: [dsh-legal-intake](https://github.com/PerryLink/dsh-legal-intake) · [dsh-legal-clause](https://github.com/PerryLink/dsh-legal-clause)
+```sh
+pnpm install --frozen-lockfile
+pnpm quickstart        # node samples/quickstart/run.mjs
+pnpm test              # node --test test/suite.test.mjs
+pnpm gate              # node scripts/gate.mjs（离线发布门禁）
+pnpm check             # node scripts/check.mjs（查 registry，CI 用）
+```
 
-- [Domain index](https://perrylink.github.io/dsh-plugins/)
-- [Checker family](https://perrylink.github.io/zh/checkers/)
-- [Mainline family](https://github.com/PerryLink/dsh-kit)
+无构建步骤：发布物就是 `src/` + `samples/` + `cordis.patch.yml`。
 
-## Family
+| 路径 | 作用 |
+|---|---|
+| `src/members.mjs` | 唯一运行时代码：读 `package.json` + `cordis.patch.yml`，校验成员并解析版本 |
+| `samples/quickstart/` | 离线样例：`input/profile.json`、`expected/result.json`、`run.mjs` |
+| `test/suite.test.mjs` | `node --test`：清单、样例、金标、错误分支 |
+| `scripts/gate.mjs` | 发布门禁：清单、样例、文档块、证据、金标、测试 |
+| `scripts/check.mjs` | registry 安装冒烟（CI 用，唯一联网脚本） |
+| `scripts/acceptance.mjs` | 由真实本地检查重建 `ACCEPTANCE.csv` |
+| `scripts/gen-readme-assets.py` | 生成 README 配图（Python + Pillow） |
+| `docs/assets/` | 流程图与 quickstart 截图 |
+| `cordis.patch.yml` | 成员装配面（两行 `insert`） |
+
+配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成：`python scripts/gen-readme-assets.py` 会输出 `docs/assets/dsh-contract-suite-flow-{light,dark}.svg` 深浅两版（矢量，五语共用），旧版单图 `dsh-contract-suite-flow.svg` 保留不动。脚本可重复执行。
+
+五语 README：`README.md` 是中文源，`README.en.md` / `README.es.md` / `README.pt.md` / `README.hi.md` 同步。
+
+Topics：`dsh`, `deepseek-harness`, `dsh-plugin`, `dsh-bundle`, `perrylink`, `suite`, `legal`
+
+## 家族与致谢
+
+本项目是 [PerryLink](https://github.com/PerryLink) 维护的 DeepSeek Harness 插件家族成员（全部 Apache-2.0）。如果这个套件帮到了你，**给个 star**——它不解锁任何功能，但会让下一个人更容易找到它。
+
+- [dsh-legal-intake](https://github.com/PerryLink/dsh-legal-intake) —— 合同需求收件成员。
+- [dsh-legal-clause](https://github.com/PerryLink/dsh-legal-clause) —— 条款/playbook 审查成员。
+- [@PerryLink](https://github.com/PerryLink) —— 创建者与维护者：套件契约、版本钉死、离线 quickstart、验收行与五语文档。
 
 <details>
-<summary>DSH domain plugin family (15 packages + 2 suites)</summary>
+<summary>DSH 领域插件家族（15 个包 + 2 个 suite）</summary>
 
 | Package | npm |
 |---|---|
@@ -229,9 +335,8 @@ Sibling packages and family indexes: [dsh-legal-intake](https://github.com/Perry
 
 </details>
 
-
 <details>
-<summary>Mainline family — 92 current install specs</summary>
+<summary>主线家族 — 87 个当前安装 spec</summary>
 
 | Package | npm |
 |---|---|
@@ -322,14 +427,11 @@ Sibling packages and family indexes: [dsh-legal-intake](https://github.com/Perry
 | **[dsh-talk](https://github.com/PerryLink/dsh-talk)** | [npm](https://www.npmjs.com/package/dsh-talk) |
 | **[dsh-test-drive](https://github.com/PerryLink/dsh-test-drive)** | [npm](https://www.npmjs.com/package/dsh-test-drive) |
 | **[dsh-translate](https://github.com/PerryLink/dsh-translate)** | [npm](https://www.npmjs.com/package/dsh-translate) |
-| **[](https://github.com/PerryLink/)** | [npm](https://www.npmjs.com/package/) |
-| **[](https://github.com/PerryLink/)** | [npm](https://www.npmjs.com/package/) |
-| **[](https://github.com/PerryLink/)** | [npm](https://www.npmjs.com/package/) |
-| **[](https://github.com/PerryLink/)** | [npm](https://www.npmjs.com/package/) |
-| **[](https://github.com/PerryLink/)** | [npm](https://www.npmjs.com/package/) |
 
 </details>
 
 ## License
 
-Apache-2.0. See `LICENSE`, `NOTICE`, `THIRD-PARTY-NOTICES`.
+[LICENSE](LICENSE)（Apache License 2.0）© 2026 dsh-contract-suite contributors
+
+<p align="center"><sub>Apache-2.0 · 社区套件，与 DeepSeek 无关。</sub></p>

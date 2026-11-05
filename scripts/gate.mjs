@@ -41,7 +41,7 @@ function walk(dir, out = []) {
 }
 
 const pkg = JSON.parse(read('package.json'))
-const readmeZh = read('README-zh.md')
+const readme = read('README.md')
 const trouble = read('TROUBLESHOOTING.md')
 
 check('manifest members match dependencies', () => {
@@ -80,15 +80,15 @@ check('quickstart input is synthetic and <= 500 KB', () => {
   if (bytes > 500 * 1024) throw new Error(`input is ${bytes} bytes, over 500 KB`)
 })
 
-check('README-zh has the eight blocks and demo prompt', () => {
-  const required = ['一句话', '适合', '不适合', '输入', '输出', '示例', '权限', 'FAQ', '外部系统']
+check('README.md has the eight blocks and demo prompt', () => {
+  const required = ['它是什么', '适合', '不适合', '输入', '输出', '示例', '权限', 'FAQ', '外部系统']
   for (const word of required) {
-    if (!readmeZh.includes(word)) throw new Error(`README-zh lacks ${word}`)
+    if (!readme.includes(word)) throw new Error(`README.md lacks ${word}`)
   }
-  if (!readmeZh.includes(`\`${pkg.version}\``)) throw new Error(`README-zh lacks version ${pkg.version}`)
-  if (!readmeZh.includes(pkg.dsh.demo.prompt.slice(0, 12))) throw new Error('README-zh lacks the demo prompt')
+  if (!readme.includes(`\`${pkg.version}\``)) throw new Error(`README.md lacks version ${pkg.version}`)
+  if (!readme.includes(pkg.dsh.demo.prompt.slice(0, 12))) throw new Error('README.md lacks the demo prompt')
   for (const label of ['读：', '写：', '联网：', '外部系统：']) {
-    if (!readmeZh.includes(label)) throw new Error(`README-zh lacks permission line ${label}`)
+    if (!readme.includes(label)) throw new Error(`README.md lacks permission line ${label}`)
   }
 })
 
