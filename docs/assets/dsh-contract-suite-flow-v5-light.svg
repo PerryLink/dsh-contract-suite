@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-labelledby="title desc">
+<title id="title">dsh-contract-suite reconciliation sheet</title>
+<desc id="desc">A contract comparison sheet, not an arrow pipeline. Each of the two members is one row. The columns are the surfaces the suite reconciles, numbered in check order: (1) ASSEMBLY, the two insert rows of cordis.patch.yml where id must equal name; (2) VERSIONS, the two exact pins in package.json dependencies; (3) RESOLVED, the node_modules source or the manifest pin plus the profile row enabled in the synthetic profile.json; (4) VERDICT. Stitch marks bind the same member across the cells, so no row can pass on one surface only. The margin band under the rows names the failure code each surface raises: rows differ from dependencies -> E_SUITE_PATCH_MISMATCH, an installed version drifts from the pin -> E_SUITE_VERSION_MISMATCH, a manifest or sample is missing or not valid JSON -> E_SUITE_MANIFEST_MISSING. The summary counts 2 rows = 2 pins = 2 resolved rows, with network false, zero writes and zero tools. Every name, version and count is read from package.json, cordis.patch.yml and the checked-in quickstart sample.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.2" y2="1"><stop offset="0" stop-color="#f9f6fd"/><stop offset="1" stop-color="#e4eaf8"/></linearGradient>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#2b2440" flood-opacity="0.13"/></filter>
+<pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#e7e4f0"/></pattern>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4B67B4"/></marker>
+</defs>
+<rect width="1100" height="660" fill="url(#bg)"/>
+<rect width="1100" height="660" fill="url(#dots)" opacity="0.55"/>
+<text x="44" y="58" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="30" font-weight="700">dsh-contract-suite</text>
+<text x="44" y="88" fill="#4d5261" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="14.5">Two members, three surfaces, one fixed version set; the suite counts as installed only at 2/2.</text>
+<rect x="850" y="30" width="206" height="28" rx="14" fill="#ece7f9"/>
+<text x="862" y="48" fill="#4B67B4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11.5">manifest v1 · install-only</text>
+<text x="44" y="116" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">IN · package.json + cordis.patch.yml + profile.json (synthetic)</text>
+<text x="1056" y="116" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">OUT · 2/2 resolved · 0 tools · network false</text>
+<line x1="44" y1="128" x2="1056" y2="128" stroke="#e7e4f0" stroke-width="1" opacity="0.75"/>
+<rect x="44" y="138" width="1012" height="42" rx="14" fill="#f5f2fb"/>
+<text x="58" y="164" fill="#4B67B4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">INSTALL</text>
+<text x="132" y="164" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="12.5">dsh plugin --profile &lt;profile&gt; add dsh-contract-suite</text>
+<path d="M520 159h24" stroke="#4B67B4" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="560" y="164" fill="#4d5261" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11.5">bundle patch → 2 insert rows · npm / git / tarball / 1024</text>
+<rect x="44" y="190" width="1012" height="410" rx="22" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.5" filter="url(#soft)"/>
+<line x1="56" y1="216" x2="56" y2="574" stroke="#4B67B4" stroke-width="4" opacity="0.5"/>
+<circle cx="70" cy="248" r="4" fill="none" stroke="#e6e2ef" stroke-width="1.5"/>
+<circle cx="70" cy="248" r="1.6" fill="#e6e2ef"/>
+<circle cx="70" cy="304" r="4" fill="none" stroke="#e6e2ef" stroke-width="1.5"/>
+<circle cx="70" cy="304" r="1.6" fill="#e6e2ef"/>
+<circle cx="70" cy="360" r="4" fill="none" stroke="#e6e2ef" stroke-width="1.5"/>
+<circle cx="70" cy="360" r="1.6" fill="#e6e2ef"/>
+<circle cx="70" cy="416" r="4" fill="none" stroke="#e6e2ef" stroke-width="1.5"/>
+<circle cx="70" cy="416" r="1.6" fill="#e6e2ef"/>
+<circle cx="70" cy="472" r="4" fill="none" stroke="#e6e2ef" stroke-width="1.5"/>
+<circle cx="70" cy="472" r="1.6" fill="#e6e2ef"/>
+<circle cx="70" cy="528" r="4" fill="none" stroke="#e6e2ef" stroke-width="1.5"/>
+<circle cx="70" cy="528" r="1.6" fill="#e6e2ef"/>
+<text x="100" y="222" fill="#4B67B4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11.5" font-weight="700" letter-spacing="1.3">RECONCILIATION SHEET</text>
+<text x="1032" y="222" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">dsh-contract-suite 0.1.0-alpha.10</text>
+<line x1="100" y1="236" x2="1032" y2="236" stroke="#e7e4f0" stroke-width="1"/>
+<circle cx="109" cy="258" r="8" fill="#4B67B4"/>
+<text x="109" y="261.5" fill="#ffffff" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">1</text>
+<text x="124" y="263" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">ASSEMBLY</text>
+<text x="100" y="282" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">cordis.patch.yml</text>
+<text x="100" y="300" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">2 insert rows · id = name</text>
+<circle cx="375" cy="258" r="8" fill="#4B67B4"/>
+<text x="375" y="261.5" fill="#ffffff" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">2</text>
+<text x="390" y="263" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">VERSIONS</text>
+<text x="366" y="282" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">package.json#dependencies</text>
+<text x="366" y="300" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">2 exact pins · no drift</text>
+<circle cx="655" cy="258" r="8" fill="#4B67B4"/>
+<text x="655" y="261.5" fill="#ffffff" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">3</text>
+<text x="670" y="263" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">RESOLVED</text>
+<text x="646" y="282" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">node_modules/ · profile.json</text>
+<text x="646" y="300" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">manifest pin · enabled row</text>
+<circle cx="929" cy="258" r="8" fill="#4B67B4"/>
+<text x="929" y="261.5" fill="#ffffff" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">4</text>
+<text x="944" y="263" fill="#141419" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="13" font-weight="700">VERDICT</text>
+<text x="920" y="282" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">2 / 2</text>
+<text x="920" y="300" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">both rows</text>
+<rect x="100" y="314" width="24" height="22" rx="8" fill="#ece7f9"/>
+<text x="112" y="329" fill="#4B67B4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">01</text>
+<text x="134" y="329" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">MEMBER</text>
+<text x="210" y="330" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="14" font-weight="700">dsh-legal-intake</text>
+<text x="1032" y="329" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" text-anchor="end" letter-spacing="1.2">declared</text>
+<line x1="100" y1="340" x2="1032" y2="340" stroke="#e7e4f0" stroke-width="1"/>
+<rect x="96" y="346" width="940" height="62" rx="12" fill="#f5f2fb"/>
+<line x1="346" y1="364" x2="346" y2="390" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<line x1="352" y1="364" x2="352" y2="390" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<line x1="626" y1="364" x2="626" y2="390" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<line x1="632" y1="364" x2="632" y2="390" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<line x1="900" y1="364" x2="900" y2="390" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<line x1="906" y1="364" x2="906" y2="390" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<text x="108" y="370" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="12">- id: dsh-legal-intake</text>
+<text x="118" y="394" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="12">name: dsh-legal-intake</text>
+<text x="374" y="370" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">&quot;dsh-legal-intake&quot;</text>
+<text x="374" y="395" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="16.5" font-weight="700">0.1.0-alpha.10</text>
+<rect x="510" y="381" width="42" height="18" rx="9" fill="#ece7f9"/>
+<text x="531" y="393.5" fill="#4B67B4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">pin</text>
+<text x="654" y="370" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">[manifest pin]</text>
+<text x="654" y="394" fill="#15803d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">profile: enabled</text>
+<circle cx="938" cy="373" r="10" fill="#eaf6ee" stroke="#15803d" stroke-width="1.5"/>
+<path d="M933 373l4 4 8-9" fill="none" stroke="#15803d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="956" y="377" fill="#15803d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11.5" font-weight="700">resolved</text>
+<rect x="100" y="416" width="24" height="22" rx="8" fill="#ece7f9"/>
+<text x="112" y="431" fill="#4B67B4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">02</text>
+<text x="134" y="431" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">MEMBER</text>
+<text x="210" y="432" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="14" font-weight="700">dsh-legal-clause</text>
+<text x="1032" y="431" fill="#8f94a4" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11" font-weight="700" text-anchor="end" letter-spacing="1.2">declared</text>
+<line x1="100" y1="442" x2="1032" y2="442" stroke="#e7e4f0" stroke-width="1"/>
+<rect x="96" y="448" width="940" height="62" rx="12" fill="#f5f2fb"/>
+<line x1="346" y1="466" x2="346" y2="492" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<line x1="352" y1="466" x2="352" y2="492" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<line x1="626" y1="466" x2="626" y2="492" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<line x1="632" y1="466" x2="632" y2="492" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<line x1="900" y1="466" x2="900" y2="492" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<line x1="906" y1="466" x2="906" y2="492" stroke="#4B67B4" stroke-width="1.2" opacity="0.5"/>
+<text x="108" y="472" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="12">- id: dsh-legal-clause</text>
+<text x="118" y="496" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="12">name: dsh-legal-clause</text>
+<text x="374" y="472" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">&quot;dsh-legal-clause&quot;</text>
+<text x="374" y="497" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="16.5" font-weight="700">0.1.0-alpha.12</text>
+<rect x="510" y="483" width="42" height="18" rx="9" fill="#ece7f9"/>
+<text x="531" y="495.5" fill="#4B67B4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700" text-anchor="middle">pin</text>
+<text x="654" y="472" fill="#4d5261" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">[manifest pin]</text>
+<text x="654" y="496" fill="#15803d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">profile: enabled</text>
+<circle cx="938" cy="475" r="10" fill="#eaf6ee" stroke="#15803d" stroke-width="1.5"/>
+<path d="M933 475l4 4 8-9" fill="none" stroke="#15803d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="956" y="479" fill="#15803d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11.5" font-weight="700">resolved</text>
+<line x1="100" y1="512" x2="1032" y2="512" stroke="#e7e4f0" stroke-width="1"/>
+<text x="100" y="528" fill="#4d5261" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">rows != deps</text>
+<text x="100" y="546" fill="#b45309" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">E_SUITE_PATCH_MISMATCH</text>
+<text x="366" y="528" fill="#4d5261" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">pin drift</text>
+<text x="366" y="546" fill="#b45309" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">E_SUITE_VERSION_MISMATCH</text>
+<text x="646" y="528" fill="#4d5261" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">manifest / sample missing</text>
+<text x="646" y="546" fill="#b45309" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">E_SUITE_MANIFEST_MISSING</text>
+<text x="920" y="528" fill="#15803d" font-family="'Microsoft YaHei','Segoe UI','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="11">all agree</text>
+<text x="920" y="546" fill="#15803d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" font-weight="700">exit 0</text>
+<rect x="96" y="558" width="940" height="34" rx="12" fill="#ece7f9" stroke="#4B67B4" stroke-width="1.5"/>
+<text x="110" y="580" fill="#141419" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="12" font-weight="700">2 rows = 2 pins = 2 resolved rows</text>
+<text x="560" y="580" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">network: false · writes 0 · 0 tools</text>
+<rect x="884" y="564" width="140" height="22" rx="11" fill="#eaf6ee"/>
+<text x="954" y="579" fill="#15803d" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="12" font-weight="700" text-anchor="middle">2/2 resolved</text>
+<text x="44" y="626" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11">READS · package.json + cordis.patch.yml + profile.json (synthetic)</text>
+<text x="1056" y="626" fill="#8f94a4" font-family="Consolas,'Microsoft YaHei',ui-monospace,monospace" font-size="11" text-anchor="end">RUN · node samples/quickstart/run.mjs --json</text>
+</svg>

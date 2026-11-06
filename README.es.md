@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-flow-dark.svg">
-  <img src="docs/assets/dsh-contract-suite-flow-light.svg" width="100%" alt="Flujo de instalación de dsh-contract-suite: dsh plugin add → dos filas en cordis.patch.yml → dos versiones exactas en package.json → samples/quickstart/run.mjs → 2/2 resolved; códigos E_SUITE_PATCH_MISMATCH / E_SUITE_VERSION_MISMATCH / E_SUITE_MANIFEST_MISSING">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-hero-en-dark.webp">
+  <img src="docs/assets/dsh-contract-suite-hero-en-light.webp" width="100%" alt="Banner de dsh-contract-suite: a la derecha, dos talones de miembro (dsh-legal-intake fijado en 0.1.0-alpha.10 y dsh-legal-clause en 0.1.0-alpha.12) unidos por un mismo conjunto de versiones; debajo, las dos filas insert de cordis.patch.yml se concilian con los dos pins exactos de package.json y un sello verde marca 2/2 resolved; datos leídos de package.json y del ejemplo sintético de quickstart">
 </picture>
 
 # dsh-contract-suite
@@ -36,6 +36,11 @@ dsh plugin --profile <profile> add dsh-contract-suite
 ## Qué es
 
 `dsh-contract-suite` es una **suite solo de instalación**: no revisa contratos; instala los dos paquetes miembros en un mismo perfil de DSH y fija sus versiones. `package.json#dependencies` fija las versiones exactas de `dsh-legal-intake` (entrada de contratos) y `dsh-legal-clause` (revisión de cláusulas/playbook), mientras que `cordis.patch.yml` inserta las dos filas de miembros. Ejecuta el ejemplo offline incluido tras instalar y la terminal muestra cada miembro, su versión fijada y cómo se resolvió: 2/2 resolved significa que el conjunto está completo. Sin red, sin llamadas a modelos y sin escribir archivos.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-contract-suite-flow-v5-light.svg" width="100%" alt="Estructura de dsh-contract-suite (hoja de conciliación): una fila por miembro y tres superficies comprobadas en orden — ensamblaje (las dos filas insert de cordis.patch.yml, con id = name), versiones (los dos pins exactos de package.json#dependencies) y resolución (node_modules o el pin del manifiesto más la fila enabled del perfil); las marcas de costura unen el mismo miembro entre columnas, así que ninguna superficie se puede omitir; el pie asigna rows != deps → E_SUITE_PATCH_MISMATCH, pin drift → E_SUITE_VERSION_MISMATCH y manifest / sample missing → E_SUITE_MANIFEST_MISSING, y el resumen es 2/2 resolved con network: false">
+</picture>
 
 ## Para qué sirve / para qué no
 
@@ -296,7 +301,7 @@ Sin paso de compilación: el contenido publicado es `src/` + `samples/` + `cordi
 | `docs/assets/` | Diagramas de flujo y la captura del quickstart |
 | `cordis.patch.yml` | Superficie de montaje de miembros (dos filas `insert`) |
 
-Las figuras las genera [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py): `python scripts/gen-readme-assets.py` escribe `docs/assets/dsh-contract-suite-flow-{light,dark}.svg` (vectorial, compartido por los cinco idiomas) y deja intacto el antiguo `dsh-contract-suite-flow.svg`. El script se puede volver a ejecutar.
+Las figuras las genera [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py): `python scripts/gen-readme-assets.py` escribe `docs/assets/dsh-contract-suite-hero-{zh,en}-{light,dark}.webp` (banners) y `docs/assets/dsh-contract-suite-flow-v5-{light,dark}.svg` (la figura de estructura, vectorial, compartida por los cinco idiomas), y deja intactos los antiguos `dsh-contract-suite-flow-{light,dark}.svg` y la imagen única `dsh-contract-suite-flow.svg`. El script se puede volver a ejecutar.
 
 README en cinco idiomas: `README.md` es la fuente en chino; `README.en.md`, `README.es.md`, `README.pt.md` y `README.hi.md` lo siguen.
 

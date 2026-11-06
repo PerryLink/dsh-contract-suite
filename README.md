@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-flow-dark.svg">
-  <img src="docs/assets/dsh-contract-suite-flow-light.svg" width="100%" alt="dsh-contract-suite 安装流程：dsh plugin add → cordis.patch.yml 两行成员 → package.json 两个精确版本 → samples/quickstart/run.mjs → 2/2 resolved；错误码 E_SUITE_PATCH_MISMATCH / E_SUITE_VERSION_MISMATCH / E_SUITE_MANIFEST_MISSING">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-contract-suite-hero-zh-light.webp" width="100%" alt="dsh-contract-suite 横幅：右侧是两张成员存根（dsh-legal-intake 固定 0.1.0-alpha.10、dsh-legal-clause 固定 0.1.0-alpha.12），用同一组版本锁扣在一起；下方 cordis.patch.yml 的两行 insert 与 package.json 的两个精确 pin 逐项对账，绿色印章显示 2/2 resolved；数据取自 package.json 与 quickstart 合成样例">
 </picture>
 
 # dsh-contract-suite
@@ -36,6 +36,11 @@ dsh plugin --profile <profile> add dsh-contract-suite
 ## 它是什么
 
 `dsh-contract-suite` 是一个 **install-only 套件**：它不审合同，只负责把两个成员包一次性装进同一个 DSH profile，并把版本钉死。`package.json#dependencies` 固定 `dsh-legal-intake`（合同需求收件）与 `dsh-legal-clause`（条款/playbook 审查）的精确版本，`cordis.patch.yml` 固定插入两行成员。安装后跑自带离线样例，终端逐行给出成员、固定版本与解析结果——2/2 resolved 才算装全。全程不联网、不调用模型、不写文件。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-contract-suite-flow-v5-light.svg" width="100%" alt="dsh-contract-suite 结构图（对账表）：两个成员各一行，按检查顺序对照三个面——装配面 cordis.patch.yml 的两行 insert（id 与 name 同名）、版本面 package.json#dependencies 的两个精确 pin、解析面 node_modules 或 manifest pin 加 profile 行的 enabled 状态；缝线把同一成员串过各列，任一面不一致都不算装全；底部注明 rows != deps → E_SUITE_PATCH_MISMATCH、pin drift → E_SUITE_VERSION_MISMATCH、manifest / sample missing → E_SUITE_MANIFEST_MISSING，汇总为 2/2 resolved、network: false">
+</picture>
 
 ## 适合与不适合
 
@@ -296,7 +301,7 @@ pnpm check             # node scripts/check.mjs（查 registry，CI 用）
 | `docs/assets/` | 流程图与 quickstart 截图 |
 | `cordis.patch.yml` | 成员装配面（两行 `insert`） |
 
-配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成：`python scripts/gen-readme-assets.py` 会输出 `docs/assets/dsh-contract-suite-flow-{light,dark}.svg` 深浅两版（矢量，五语共用），旧版单图 `dsh-contract-suite-flow.svg` 保留不动。脚本可重复执行。
+配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成：`python scripts/gen-readme-assets.py` 会输出 `docs/assets/dsh-contract-suite-hero-{zh,en}-{light,dark}.webp`（横幅）与 `docs/assets/dsh-contract-suite-flow-v5-{light,dark}.svg`（结构图，深浅两版，五语共用），旧版 `dsh-contract-suite-flow-{light,dark}.svg` 与单图 `dsh-contract-suite-flow.svg` 保留不动。脚本可重复执行。
 
 五语 README：`README.md` 是中文源，`README.en.md` / `README.es.md` / `README.pt.md` / `README.hi.md` 同步。
 

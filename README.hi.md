@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-flow-dark.svg">
-  <img src="docs/assets/dsh-contract-suite-flow-light.svg" width="100%" alt="dsh-contract-suite इंस्टॉल फ़्लो: dsh plugin add → cordis.patch.yml में दो पंक्तियाँ → package.json में दो सटीक पिन → samples/quickstart/run.mjs → 2/2 resolved; त्रुटि कोड E_SUITE_PATCH_MISMATCH / E_SUITE_VERSION_MISMATCH / E_SUITE_MANIFEST_MISSING">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-hero-en-dark.webp">
+  <img src="docs/assets/dsh-contract-suite-hero-en-light.webp" width="100%" alt="dsh-contract-suite बैनर: दाईं ओर दो सदस्य स्टब (dsh-legal-intake 0.1.0-alpha.10 पर पिन, dsh-legal-clause 0.1.0-alpha.12 पर पिन) एक ही संस्करण-सेट में जुड़े हैं; नीचे cordis.patch.yml की दो insert पंक्तियाँ package.json के दो सटीक pins से मिलाई गई हैं और हरी मुहर 2/2 resolved दिखाती है; डेटा package.json और quickstart के सिंथेटिक नमूने से">
 </picture>
 
 # dsh-contract-suite
@@ -36,6 +36,11 @@ dsh plugin --profile <profile> add dsh-contract-suite
 ## यह क्या है
 
 `dsh-contract-suite` एक **सिर्फ़ इंस्टॉल करने वाली सूट** है: यह कॉन्ट्रैक्ट की समीक्षा नहीं करती, बल्कि दोनों सदस्य पैकेजों को एक ही DSH प्रोफ़ाइल में इंस्टॉल करती है और उनके संस्करण पिन करती है। `package.json#dependencies` में `dsh-legal-intake` (कॉन्ट्रैक्ट इनटेक) और `dsh-legal-clause` (क्लॉज़/playbook समीक्षा) के सटीक संस्करण तय हैं, जबकि `cordis.patch.yml` दोनों सदस्य पंक्तियाँ जोड़ता है। इंस्टॉल के बाद बंडल किया गया ऑफ़लाइन नमूना चलाएँ — टर्मिनल हर सदस्य, उसका पिन किया संस्करण और रिज़ॉल्व होने का स्रोत दिखाता है; 2/2 resolved का मतलब है कि सेट पूरा है। कोई नेटवर्क नहीं, कोई मॉडल कॉल नहीं, कोई फ़ाइल नहीं लिखी जाती।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-contract-suite-flow-v5-light.svg" width="100%" alt="dsh-contract-suite संरचना (मिलान पत्रक): हर सदस्य के लिए एक पंक्ति और क्रम से जाँची गई तीन सतहें — असेंबली (cordis.patch.yml की दो insert पंक्तियाँ, जहाँ id = name), संस्करण (package.json#dependencies के दो सटीक pins) और रिज़ॉल्यूशन (node_modules या manifest pin के साथ प्रोफ़ाइल की enabled पंक्ति); सिलाई के निशान एक ही सदस्य को स्तंभों में जोड़ते हैं, इसलिए कोई सतह छोड़ी नहीं जा सकती; नीचे rows != deps → E_SUITE_PATCH_MISMATCH, pin drift → E_SUITE_VERSION_MISMATCH और manifest / sample missing → E_SUITE_MANIFEST_MISSING दर्ज हैं, और सार 2/2 resolved है (network: false)">
+</picture>
 
 ## किसके लिए है / किसके लिए नहीं
 
@@ -296,7 +301,7 @@ pnpm check             # node scripts/check.mjs (रजिस्ट्री ज
 | `docs/assets/` | फ़्लो डायग्राम और quickstart स्क्रीनशॉट |
 | `cordis.patch.yml` | सदस्य असेंबली सतह (दो `insert` पंक्तियाँ) |
 
-चित्र [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से बनते हैं: `python scripts/gen-readme-assets.py` `docs/assets/dsh-contract-suite-flow-{light,dark}.svg` लिखता है (वेक्टर, पाँचों भाषाओं में साझा) और पुराने `dsh-contract-suite-flow.svg` को अछूता छोड़ता है। स्क्रिप्ट दोबारा चलाई जा सकती है।
+चित्र [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से बनते हैं: `python scripts/gen-readme-assets.py` `docs/assets/dsh-contract-suite-hero-{zh,en}-{light,dark}.webp` (बैनर) और `docs/assets/dsh-contract-suite-flow-v5-{light,dark}.svg` (संरचना चित्र, वेक्टर, पाँचों भाषाओं में साझा) लिखता है, तथा पुराने `dsh-contract-suite-flow-{light,dark}.svg` और एकल `dsh-contract-suite-flow.svg` को अछूता छोड़ता है। स्क्रिप्ट दोबारा चलाई जा सकती है।
 
 पाँच भाषाओं के README: `README.md` चीनी स्रोत है; `README.en.md`, `README.es.md`, `README.pt.md` और `README.hi.md` उसका अनुसरण करते हैं।
 
