@@ -147,6 +147,11 @@ La salida real está en el paso 3 de «Instalación en tres pasos». La captura 
 
 ![Salida real de terminal del quickstart de dsh-contract-suite](docs/assets/quickstart.png)
 
+![Salida real de terminal del quickstart de dsh-contract-suite](docs/assets/dsh-contract-suite-install.gif)
+
+*Repetición animada de una ejecución real registrada en este repositorio.*
+
+
 Los metadatos de la captura (comando, hora, SHA-256 de la salida) están en `screenshots.json`.
 
 ## Configuración

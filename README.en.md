@@ -147,6 +147,11 @@ The real output is in step 3 of "Three-step setup". The screenshot is the real t
 
 ![dsh-contract-suite quickstart real terminal output](docs/assets/quickstart.png)
 
+![dsh-contract-suite quickstart real terminal output](docs/assets/dsh-contract-suite-install.gif)
+
+*Animated replay of a real run recorded in this repository.*
+
+
 Screenshot metadata (command, time, output SHA-256) is in `screenshots.json`.
 
 ## Configuration
