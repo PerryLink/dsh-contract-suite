@@ -147,7 +147,7 @@ node samples/quickstart/run.mjs
 
 ![dsh-contract-suite quickstart 真实运行输出](docs/assets/quickstart.png)
 
-![dsh-contract-suite quickstart 真实运行输出](docs/assets/dsh-contract-suite-install.gif)
+![dsh-contract-suite quickstart 真实运行输出](docs/assets/dsh-contract-suite-demo.gif)
 
 *本仓库一次真实运行的动图回放。*
 

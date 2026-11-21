@@ -147,7 +147,7 @@ The real output is in step 3 of "Three-step setup". The screenshot is the real t
 
 ![dsh-contract-suite quickstart real terminal output](docs/assets/quickstart.png)
 
-![dsh-contract-suite quickstart real terminal output](docs/assets/dsh-contract-suite-install.gif)
+![dsh-contract-suite quickstart real terminal output](docs/assets/dsh-contract-suite-demo.gif)
 
 *Animated replay of a real run recorded in this repository.*
 

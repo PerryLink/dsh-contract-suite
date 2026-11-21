@@ -147,7 +147,7 @@ A saída real está no passo 3 de «Instalação em três passos». A captura é
 
 ![Saída real de terminal do quickstart do dsh-contract-suite](docs/assets/quickstart.png)
 
-![Saída real de terminal do quickstart do dsh-contract-suite](docs/assets/dsh-contract-suite-install.gif)
+![Saída real de terminal do quickstart do dsh-contract-suite](docs/assets/dsh-contract-suite-demo.gif)
 
 *Repetição animada de uma execução real registrada neste repositório.*
 
