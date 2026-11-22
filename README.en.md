@@ -7,6 +7,8 @@
 
 # dsh-contract-suite
 
+Current version `0.1.1`.
+
 **Install both contract-legal packages in one command — then verify every member version resolves.**
 
 An install-only suite for DeepSeek Harness: it pins `dsh-legal-intake` (contract intake) and `dsh-legal-clause` (clause/playbook review) to one exact version set and installs them together. The suite has no tool surface of its own — it reads no contracts, makes no network calls, and invokes no model.

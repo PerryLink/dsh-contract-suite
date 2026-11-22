@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "合同法务套件",
+    "description": "面向 DeepSeek Harness 的纯安装型套件：把合同需求收件（dsh-legal-intake）与条款/playbook 审查（dsh-legal-clause）钉在同一组精确版本上一起装；套件本身没有工具面，不读合同、不联网、不调用模型。"
+  }
+}

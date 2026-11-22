@@ -131,7 +131,7 @@ dsh plugin --profile <profile> add dsh-contract-suite
 | `dsh-legal-intake` | `0.1.0` |
 | `dsh-legal-clause` | `0.1.0-alpha.12` |
 
-套件当前版本：`0.1.0`（与 `package.json` 一致）。
+套件当前版本：`0.1.1`（与 `package.json` 一致）。
 
 ## 示例
 

@@ -1,6 +1,6 @@
 {
   "name": "dsh-contract-suite",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "One-command install for dsh-legal-intake and dsh-legal-clause.",
   "type": "module",
   "license": "Apache-2.0",
@@ -53,7 +53,8 @@
     "SUITE.md",
     "TROUBLESHOOTING.md",
     "screenshots.json",
-    "icon.svg"
+    "icon.svg",
+    "locale/*.json"
   ],
   "keywords": [
     "deepseek-harness",
@@ -79,5 +80,9 @@
     "dsh-legal-intake": "0.1.0-alpha.10",
     "dsh-legal-clause": "0.1.0-alpha.12"
   },
-  "icon": "icon.svg"
+  "icon": "icon.svg",
+  "author": {
+    "name": "PerryLink",
+    "url": "https://github.com/PerryLink"
+  }
 }
