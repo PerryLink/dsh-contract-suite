@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-hero-en-dark.webp">
-  <img src="docs/assets/dsh-contract-suite-hero-en-light.webp" width="100%" alt="Banner do dsh-contract-suite: à direita, dois canhotos de membro (dsh-legal-intake fixado em 0.1.0-alpha.10 e dsh-legal-clause em 0.1.0-alpha.12) presos ao mesmo conjunto de versões; abaixo, as duas linhas insert do cordis.patch.yml são conciliadas com os dois pins exatos do package.json e um selo verde marca 2/2 resolved; dados lidos do package.json e do exemplo sintético do quickstart">
+  <img src="docs/assets/dsh-contract-suite-hero-en-light.webp" width="100%" alt="Banner do dsh-contract-suite: à direita, dois canhotos de membro (dsh-legal-intake fixado em 0.1.0 e dsh-legal-clause em 0.1.0-alpha.12) presos ao mesmo conjunto de versões; abaixo, as duas linhas insert do cordis.patch.yml são conciliadas com os dois pins exatos do package.json e um selo verde marca 2/2 resolved; dados lidos do package.json e do exemplo sintético do quickstart">
 </picture>
 
 # dsh-contract-suite
@@ -10,6 +10,8 @@
 **Instale os dois pacotes de contratos e jurídico com um único comando e confirme que cada versão de membro resolve.**
 
 Suíte somente de instalação para o DeepSeek Harness: fixa `dsh-legal-intake` (entrada de contratos) e `dsh-legal-clause` (revisão de cláusulas/playbook) em um único conjunto de versões exatas e os instala juntos. A suíte não tem superfície de ferramentas própria: não lê contratos, não faz chamadas de rede nem invoca modelos.
+
+Última verificação: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
 
 [Instalação](#instalação-em-três-passos) · [Configuração](#configuração) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
@@ -101,10 +103,10 @@ dsh plugin --profile <profile> add dsh-contract-suite
 
    ```text
    dsh-contract-suite quickstart (offline)
-   suite:    dsh-contract-suite 0.1.0-alpha.10
+   suite:    dsh-contract-suite 0.1.0
    profile:  contract-demo (synthetic, 2/2 rows enabled)
    members:  2/2 resolved
-     dsh-legal-intake     0.1.0-alpha.10   [manifest pin]    profile=enabled
+     dsh-legal-intake     0.1.0   [manifest pin]    profile=enabled
      dsh-legal-clause     0.1.0-alpha.12   [manifest pin]    profile=enabled
    network:  false (no fetch, no registry call)
    ```
@@ -126,10 +128,10 @@ A suíte só instala estes membros e não tem superfície de ferramentas própri
 
 | Membro | Versão fixada |
 |---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.10` |
+| `dsh-legal-intake` | `0.1.0` |
 | `dsh-legal-clause` | `0.1.0-alpha.12` |
 
-Versão atual da suíte: `0.1.0-alpha.10` (igual a `package.json`).
+Versão atual da suíte: `0.1.0` (igual a `package.json`).
 
 ## Exemplo
 
@@ -151,7 +153,6 @@ A saída real está no passo 3 de «Instalação em três passos». A captura é
 
 *Repetição animada de uma execução real registrada neste repositório.*
 
-
 Os metadados da captura (comando, hora, SHA-256 da saída) estão em `screenshots.json`.
 
 ## Configuração
@@ -161,7 +162,7 @@ A suíte é um bundle somente de instalação: **sem esquema Config e sem chaves
 | Ajustável | Onde | Valor atual | Observações |
 |---|---|---|---|
 | Conjunto de membros | `cordis.patch.yml` | `dsh-legal-intake`, `dsh-legal-clause` | Uma linha `id` + `name` por membro; precisa coincidir exatamente com `dependencies` |
-| Versões dos membros | `package.json#dependencies` | `0.1.0-alpha.10`, `0.1.0-alpha.12` | Versões exatas; atualizar um membro dispara `E_SUITE_VERSION_MISMATCH` |
+| Versões dos membros | `package.json#dependencies` | `0.1.0`, `0.1.0-alpha.12` | Versões exatas; atualizar um membro dispara `E_SUITE_VERSION_MISMATCH` |
 | Destino da instalação | `dsh plugin --profile <profile>` | à sua escolha | A suíte instala apenas no perfil indicado |
 | Metadados do demo | `package.json#dsh.demo` | `sample` / `prompt` / `expect` / `screenshot` | Declara o exemplo offline, o prompt e os caminhos de evidência |
 
@@ -251,7 +252,7 @@ A instalação não lê documentos de negócio; o exemplo incluído lê apenas t
 - **Somente instalação.** A suíte não tem superfície de ferramentas própria; não revisa contratos nem oferece OCR, CLM externo ou e-sign. Essas capacidades (quando existem) pertencem aos membros.
 - **Alpha / partial / not counted.** Sem declaração de GA ou de prontidão para produção; as linhas públicas de aceitação com `counted=false` não contam como aceitação formal.
 - **As versões são decididas pela suíte.** Com os membros fixados, atualizar um deles isoladamente falha; mudar a versão de um membro exige uma nova versão da suíte.
-- **O arquivo dourado do exemplo está uma versão atrás.** `samples/quickstart/expected/result.json` ainda registra `0.1.0-alpha.8`, enquanto o pacote atual é `0.1.0-alpha.10`; por isso `run.mjs --check` e os testes que dependem dele relatam divergência com o dourado. Use `run.mjs --json` como fonte de verdade e regenere o dourado para restaurar a checagem. Isso não afeta a instalação nem a resolução de membros.
+- **O arquivo dourado do exemplo está uma versão atrás.** `samples/quickstart/expected/result.json` ainda registra `0.1.0-alpha.8`, enquanto o pacote atual é `0.1.0`; por isso `run.mjs --check` e os testes que dependem dele relatam divergência com o dourado. Use `run.mjs --json` como fonte de verdade e regenere o dourado para restaurar a checagem. Isso não afeta a instalação nem a resolução de membros.
 - **Sem chaves de configuração.** Os ajustes de cada membro ficam no README dele; a suíte não adiciona interruptores.
 
 ## Interoperabilidade com outros plugins DSH

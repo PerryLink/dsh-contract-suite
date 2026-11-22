@@ -11,7 +11,7 @@ Two figures, read off `package.json`, `cordis.patch.yml`,
       version pinned for it, clasped together by ONE VERSION SET, a
       reconciliation strip that holds `cordis.patch.yml`'s two insert rows
       against `package.json`'s two exact pins, and a 2/2 resolved seal over
-      `0.1.0-alpha.10`.
+      `0.1.0`.
 
   flow 1100x660 (hand-written SVG, light/dark)
       Grammar: a RECONCILIATION SHEET -- a contract comparison grid, not a row
@@ -41,7 +41,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "docs", "assets")
 NAME = "dsh-contract-suite"
-SUITE_VERSION = "0.1.0-alpha.10"
+SUITE_VERSION = "0.1.0"
 
 FONT_FILES = {
     "cjk": r"C:\Windows\Fonts\msyh.ttc",

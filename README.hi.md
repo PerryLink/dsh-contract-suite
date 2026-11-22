@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-hero-en-dark.webp">
-  <img src="docs/assets/dsh-contract-suite-hero-en-light.webp" width="100%" alt="dsh-contract-suite बैनर: दाईं ओर दो सदस्य स्टब (dsh-legal-intake 0.1.0-alpha.10 पर पिन, dsh-legal-clause 0.1.0-alpha.12 पर पिन) एक ही संस्करण-सेट में जुड़े हैं; नीचे cordis.patch.yml की दो insert पंक्तियाँ package.json के दो सटीक pins से मिलाई गई हैं और हरी मुहर 2/2 resolved दिखाती है; डेटा package.json और quickstart के सिंथेटिक नमूने से">
+  <img src="docs/assets/dsh-contract-suite-hero-en-light.webp" width="100%" alt="dsh-contract-suite बैनर: दाईं ओर दो सदस्य स्टब (dsh-legal-intake 0.1.0 पर पिन, dsh-legal-clause 0.1.0-alpha.12 पर पिन) एक ही संस्करण-सेट में जुड़े हैं; नीचे cordis.patch.yml की दो insert पंक्तियाँ package.json के दो सटीक pins से मिलाई गई हैं और हरी मुहर 2/2 resolved दिखाती है; डेटा package.json और quickstart के सिंथेटिक नमूने से">
 </picture>
 
 # dsh-contract-suite
@@ -10,6 +10,8 @@
 **एक ही कमांड से कॉन्ट्रैक्ट-लीगल दोनों पैकेज इंस्टॉल करें और तुरंत जाँचें कि हर सदस्य का संस्करण रिज़ॉल्व होता है।**
 
 DeepSeek Harness के लिए सिर्फ़ इंस्टॉल करने वाली सूट: यह `dsh-legal-intake` (कॉन्ट्रैक्ट इनटेक) और `dsh-legal-clause` (क्लॉज़/playbook समीक्षा) को एक ही सटीक संस्करण-सेट पर पिन करके साथ इंस्टॉल करती है। सूट की अपनी कोई टूल सतह नहीं है — यह कॉन्ट्रैक्ट नहीं पढ़ती, नेटवर्क कॉल नहीं करती और मॉडल नहीं बुलाती।
+
+अंतिम सत्यापन: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
 
 [इंस्टॉल](#तीन-चरणों-में-शुरुआत) · [कॉन्फ़िगरेशन](#कॉन्फ़िगरेशन) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
@@ -101,10 +103,10 @@ dsh plugin --profile <profile> add dsh-contract-suite
 
    ```text
    dsh-contract-suite quickstart (offline)
-   suite:    dsh-contract-suite 0.1.0-alpha.10
+   suite:    dsh-contract-suite 0.1.0
    profile:  contract-demo (synthetic, 2/2 rows enabled)
    members:  2/2 resolved
-     dsh-legal-intake     0.1.0-alpha.10   [manifest pin]    profile=enabled
+     dsh-legal-intake     0.1.0   [manifest pin]    profile=enabled
      dsh-legal-clause     0.1.0-alpha.12   [manifest pin]    profile=enabled
    network:  false (no fetch, no registry call)
    ```
@@ -126,10 +128,10 @@ dsh plugin --profile <profile> add dsh-contract-suite
 
 | सदस्य | पिन किया संस्करण |
 |---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.10` |
+| `dsh-legal-intake` | `0.1.0` |
 | `dsh-legal-clause` | `0.1.0-alpha.12` |
 
-सूट का वर्तमान संस्करण: `0.1.0-alpha.10` (`package.json` से मेल खाता है)।
+सूट का वर्तमान संस्करण: `0.1.0` (`package.json` से मेल खाता है)।
 
 ## उदाहरण
 
@@ -151,7 +153,6 @@ node samples/quickstart/run.mjs
 
 *इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
 
-
 स्क्रीनशॉट मेटाडेटा (कमांड, समय, आउटपुट SHA-256) `screenshots.json` में है।
 
 ## कॉन्फ़िगरेशन
@@ -161,7 +162,7 @@ node samples/quickstart/run.mjs
 | समायोज्य | कहाँ | वर्तमान मान | टिप्पणी |
 |---|---|---|---|
 | सदस्य सेट | `cordis.patch.yml` | `dsh-legal-intake`, `dsh-legal-clause` | हर सदस्य के लिए एक `id` + `name` पंक्ति; `dependencies` से बिल्कुल मेल खाना चाहिए |
-| सदस्य संस्करण | `package.json#dependencies` | `0.1.0-alpha.10`, `0.1.0-alpha.12` | सटीक पिन; एक सदस्य अपग्रेड करने पर `E_SUITE_VERSION_MISMATCH` |
+| सदस्य संस्करण | `package.json#dependencies` | `0.1.0`, `0.1.0-alpha.12` | सटीक पिन; एक सदस्य अपग्रेड करने पर `E_SUITE_VERSION_MISMATCH` |
 | इंस्टॉल लक्ष्य | `dsh plugin --profile <profile>` | आपकी पसंद | सूट सिर्फ़ बताई गई प्रोफ़ाइल में इंस्टॉल होती है |
 | डेमो मेटाडेटा | `package.json#dsh.demo` | `sample` / `prompt` / `expect` / `screenshot` | ऑफ़लाइन नमूना, प्रॉम्प्ट और साक्ष्य पथ घोषित करता है |
 
@@ -251,7 +252,7 @@ node samples/quickstart/run.mjs
 - **सिर्फ़ इंस्टॉल।** सूट की अपनी कोई टूल सतह नहीं; यह कॉन्ट्रैक्ट की समीक्षा नहीं कर सकती और OCR, बाहरी CLM या e-sign इंटीग्रेशन नहीं देती। ये क्षमताएँ (जहाँ मौजूद हैं) सदस्यों की हैं।
 - **Alpha / partial / not counted।** GA या उत्पादन-तैयारी का कोई दावा नहीं; `counted=false` वाली सार्वजनिक स्वीकृति पंक्तियाँ औपचारिक स्वीकृति में नहीं गिनी जातीं।
 - **संस्करण सूट रिलीज़ तय करती है।** सदस्य पिन होने पर अकेले सदस्य को अपग्रेड करना विफल होता है; सदस्य संस्करण बदलने के लिए नई सूट रिलीज़ चाहिए।
-- **नमूने का गोल्डन एक रिलीज़ पीछे है।** `samples/quickstart/expected/result.json` में अभी `0.1.0-alpha.8` दर्ज है, जबकि वर्तमान पैकेज `0.1.0-alpha.10` है; इसलिए `run.mjs --check` और उस पर निर्भर टेस्ट गोल्डन-मेल न होने की शिकायत करते हैं। `run.mjs --json` को सत्य मानें और जाँच बहाल करने के लिए गोल्डन फिर बनाएँ। इसका इंस्टॉल या सदस्य-रिज़ॉल्यूशन पर कोई असर नहीं।
+- **नमूने का गोल्डन एक रिलीज़ पीछे है।** `samples/quickstart/expected/result.json` में अभी `0.1.0-alpha.8` दर्ज है, जबकि वर्तमान पैकेज `0.1.0` है; इसलिए `run.mjs --check` और उस पर निर्भर टेस्ट गोल्डन-मेल न होने की शिकायत करते हैं। `run.mjs --json` को सत्य मानें और जाँच बहाल करने के लिए गोल्डन फिर बनाएँ। इसका इंस्टॉल या सदस्य-रिज़ॉल्यूशन पर कोई असर नहीं।
 - **कोई कॉन्फ़िगरेशन कुंजी नहीं।** हर सदस्य के समायोजन उसके README में हैं; सूट कोई अतिरिक्त स्विच नहीं देती।
 
 ## अन्य DSH प्लगइनों के साथ इंटरऑपरेबिलिटी

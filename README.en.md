@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-contract-suite-hero-en-dark.webp">
-  <img src="docs/assets/dsh-contract-suite-hero-en-light.webp" width="100%" alt="dsh-contract-suite banner: two member stubs on the right (dsh-legal-intake pinned at 0.1.0-alpha.10, dsh-legal-clause pinned at 0.1.0-alpha.12) clasped into one version set; below, the two insert rows in cordis.patch.yml are reconciled against the two exact pins in package.json, and a green seal reads 2/2 resolved; data read from package.json and the synthetic quickstart sample">
+  <img src="docs/assets/dsh-contract-suite-hero-en-light.webp" width="100%" alt="dsh-contract-suite banner: two member stubs on the right (dsh-legal-intake pinned at 0.1.0, dsh-legal-clause pinned at 0.1.0-alpha.12) clasped into one version set; below, the two insert rows in cordis.patch.yml are reconciled against the two exact pins in package.json, and a green seal reads 2/2 resolved; data read from package.json and the synthetic quickstart sample">
 </picture>
 
 # dsh-contract-suite
@@ -10,6 +10,8 @@
 **Install both contract-legal packages in one command — then verify every member version resolves.**
 
 An install-only suite for DeepSeek Harness: it pins `dsh-legal-intake` (contract intake) and `dsh-legal-clause` (clause/playbook review) to one exact version set and installs them together. The suite has no tool surface of its own — it reads no contracts, makes no network calls, and invokes no model.
+
+Last verified on DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
 
 [Install](#three-step-setup) · [Configuration](#configuration) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
@@ -101,10 +103,10 @@ dsh plugin --profile <profile> add dsh-contract-suite
 
    ```text
    dsh-contract-suite quickstart (offline)
-   suite:    dsh-contract-suite 0.1.0-alpha.10
+   suite:    dsh-contract-suite 0.1.0
    profile:  contract-demo (synthetic, 2/2 rows enabled)
    members:  2/2 resolved
-     dsh-legal-intake     0.1.0-alpha.10   [manifest pin]    profile=enabled
+     dsh-legal-intake     0.1.0   [manifest pin]    profile=enabled
      dsh-legal-clause     0.1.0-alpha.12   [manifest pin]    profile=enabled
    network:  false (no fetch, no registry call)
    ```
@@ -126,10 +128,10 @@ The suite only installs these members; it has no tool surface of its own. Versio
 
 | Member | Pinned version |
 |---|---:|
-| `dsh-legal-intake` | `0.1.0-alpha.10` |
+| `dsh-legal-intake` | `0.1.0` |
 | `dsh-legal-clause` | `0.1.0-alpha.12` |
 
-Current suite version: `0.1.0-alpha.10` (matches `package.json`).
+Current suite version: `0.1.0` (matches `package.json`).
 
 ## Example
 
@@ -151,7 +153,6 @@ The real output is in step 3 of "Three-step setup". The screenshot is the real t
 
 *Animated replay of a real run recorded in this repository.*
 
-
 Screenshot metadata (command, time, output SHA-256) is in `screenshots.json`.
 
 ## Configuration
@@ -161,7 +162,7 @@ The suite is an install-only bundle: **no Config schema and no runtime keys**. O
 | Adjustable | Where | Current value | Notes |
 |---|---|---|---|
 | Member set | `cordis.patch.yml` | `dsh-legal-intake`, `dsh-legal-clause` | One `id` + `name` row per member; must match `dependencies` exactly |
-| Member versions | `package.json#dependencies` | `0.1.0-alpha.10`, `0.1.0-alpha.12` | Exact pins; upgrading one member raises `E_SUITE_VERSION_MISMATCH` |
+| Member versions | `package.json#dependencies` | `0.1.0`, `0.1.0-alpha.12` | Exact pins; upgrading one member raises `E_SUITE_VERSION_MISMATCH` |
 | Install target | `dsh plugin --profile <profile>` | your choice | The suite installs into the named profile only |
 | Demo metadata | `package.json#dsh.demo` | `sample` / `prompt` / `expect` / `screenshot` | Declares the offline sample, prompt and evidence paths |
 
@@ -251,7 +252,7 @@ The install reads no business documents; the bundled sample reads only three fil
 - **Install-only.** The suite has no tool surface of its own; it cannot review contracts and provides no OCR, external CLM or e-sign integration. Those capabilities (where they exist) belong to the members.
 - **Alpha / partial / not counted.** No GA or production-readiness claim; public acceptance rows marked `counted=false` do not count as formal acceptance.
 - **Versions are decided by suite releases.** With members pinned, upgrading a member alone fails; changing a member version requires a new suite release.
-- **The sample golden lags one release.** `samples/quickstart/expected/result.json` still records `0.1.0-alpha.8`, while the current package is `0.1.0-alpha.10`; `run.mjs --check` and the tests that depend on it therefore report a golden mismatch. Treat `run.mjs --json` as the source of truth and regenerate the golden file to restore the check. This does not affect installation or member resolution.
+- **The sample golden lags one release.** `samples/quickstart/expected/result.json` still records `0.1.0-alpha.8`, while the current package is `0.1.0`; `run.mjs --check` and the tests that depend on it therefore report a golden mismatch. Treat `run.mjs --json` as the source of truth and regenerate the golden file to restore the check. This does not affect installation or member resolution.
 - **No configuration keys.** Adjustable member settings live in each member's README; the suite adds no switches.
 
 ## Interoperability with other DSH plugins

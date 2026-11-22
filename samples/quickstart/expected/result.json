@@ -1,6 +1,6 @@
 {
   "suite": "dsh-contract-suite",
-  "version": "0.1.0-alpha.8",
+  "version": "0.1.0",
   "sample": "samples/quickstart/input/profile.json",
   "network": false,
   "profile": {
